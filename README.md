@@ -5,7 +5,7 @@
 Welcome to the public website repository of **Spirit Connect Technology**.  
 We are pioneering the future of human consciousness preservation and digital existence.
 
-🌐 **Live site:** [https://fulongli.github.io/SpiritConnectTec.github.io/](https://fulongli.github.io/SpiritConnectTec.github.io/)
+🌐 **Live site:** [https://fulongli.github.io/Spirit-Connect-Fantasy/](https://fulongli.github.io/Spirit-Connect-Fantasy/)
 
 ---
 
