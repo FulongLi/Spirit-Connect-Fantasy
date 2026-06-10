@@ -45,6 +45,25 @@ permalink: /zh/anotherworld/storylines/
   .sl-books{flex:1 1 auto;flex-direction:row;flex-wrap:wrap;width:100%}
   .sl-book{flex:1 1 260px}
 }
+
+.sl-views{display:flex;gap:.6rem;margin-bottom:1.5rem}
+.sl-view{padding:.5rem 1.3rem;border-radius:999px;border:1px solid var(--border);
+  background:var(--card);color:var(--muted);cursor:pointer;font-family:inherit;
+  font-size:.92rem;transition:all .25s ease}
+.sl-view:hover{border-color:var(--brand);color:var(--fg)}
+.sl-view.active{border-color:var(--brand);color:var(--brand);box-shadow:0 0 18px rgba(0,229,255,.15)}
+.sg-mount{position:relative;border:1px solid var(--border);border-radius:var(--radius);
+  background:rgba(10,18,32,.5);overflow:hidden}
+.sg-canvas{display:block;cursor:grab}
+.sg-chips{position:absolute;top:.8rem;left:.9rem;z-index:2;display:flex;gap:.5rem;flex-wrap:wrap}
+.sg-chip{display:flex;align-items:center;gap:.4rem;padding:.28rem .75rem;border-radius:999px;
+  border:1px solid var(--border);background:rgba(15,27,45,.85);color:var(--muted);
+  font-size:.75rem;cursor:pointer;font-family:inherit;transition:all .2s ease}
+.sg-chip.active{color:var(--fg);border-color:rgba(0,229,255,.35)}
+.sg-chip:not(.active){opacity:.4}
+.sg-chip-dot{width:9px;height:9px;border-radius:50%;display:inline-block}
+.sg-tip{position:absolute;bottom:.7rem;right:.95rem;z-index:2;color:var(--muted);
+  font-size:.72rem;opacity:.8;pointer-events:none}
 </style>
 
 <header class="hero" style="padding: 5rem 0 3rem;">
@@ -62,12 +81,24 @@ permalink: /zh/anotherworld/storylines/
 
 <section class="section">
   <div class="container">
+    <div class="sl-views">
+      <button type="button" id="tab-line" class="sl-view active">故事线</button>
+      <button type="button" id="tab-graph" class="sl-view">关系图谱</button>
+    </div>
+    <div id="view-line">
     <div class="sl-wrap">
       <div class="sl-books" id="sl-list" aria-label="档案"></div>
       <div class="sl-stage">
         <div class="sl-canvas" id="sl-canvas"></div>
         <div class="sl-detail" id="sl-detail"></div>
       </div>
+    </div>
+    </div>
+    <div id="view-graph" style="display:none">
+      <div id="sg-mount" class="sg-mount">
+        <div class="sg-tip">拖拽节点 · 滚轮缩放 · 拖动空白平移</div>
+      </div>
+      <div class="sl-detail" id="sg-detail"></div>
     </div>
   </div>
 </section>
@@ -148,4 +179,224 @@ initStorylines({
     }
   ]
 });
+</script>
+
+<script src="{{ '/assets/storygraph.js' | relative_url }}"></script>
+<script>
+var GRAPH = {
+  mountId:'sg-mount', detailId:'sg-detail', height:620,
+  hint:"点击节点查看说明；悬停可高亮它的所有连接。",
+  connLabel:"连接",
+  types:{
+    book:{label:"书卷",color:'#5ef9ff'},
+    character:{label:"人物",color:'#ffb454'},
+    event:{label:"事件",color:'#a78bfa'},
+    concept:{label:"概念",color:'#4dd0a1'}
+  },
+  nodes:[
+  {
+    "id": "b1",
+    "label": "月球暗面",
+    "type": "book",
+    "d": "档案 I · 第一扇门。吉姆的事故、追查与登月。系列的入口。"
+  },
+  {
+    "id": "b2",
+    "label": "巨鲸陨落",
+    "type": "book",
+    "d": "档案 II · 法厄同证词。查理在远古战争中的见证。"
+  },
+  {
+    "id": "jim",
+    "label": "吉姆·维尔",
+    "type": "character",
+    "d": "第一扇门的打开者。第一个完整接触并返回月球暗面的人。"
+  },
+  {
+    "id": "djim",
+    "label": "数字吉姆",
+    "type": "character",
+    "d": "吉姆的数字双生体，留在泰拉撒深处的另一半。主体核问题的入口。"
+  },
+  {
+    "id": "anna",
+    "label": "安娜·刘易斯",
+    "type": "character",
+    "d": "读规则的人。困于非人类意识区域——《灵猫》的入口。"
+  },
+  {
+    "id": "charlie",
+    "label": "查理·黑尔",
+    "type": "character",
+    "d": "最像普通人的见证者。困于法厄同终战的记录之中。"
+  },
+  {
+    "id": "elara",
+    "label": "艾拉",
+    "type": "character",
+    "d": "小女孩形态只是投影。她帮助吉姆——但她的立场是一个未解的问题。"
+  },
+  {
+    "id": "spire",
+    "label": "伊莱亚斯·斯皮尔",
+    "type": "character",
+    "d": "灵接科技创始人。被血色游轮改变的人，「迁出」执念的源头。"
+  },
+  {
+    "id": "lune",
+    "label": "阿德里安·卢恩",
+    "type": "character",
+    "d": "现实侧的伦理见证者。铁律：人不是样本。"
+  },
+  {
+    "id": "arthur",
+    "label": "亚瑟·惠勒",
+    "type": "character",
+    "d": "斯皮尔旧友，最早的上传者之一。他的停滞是主体核假说的关键证据。"
+  },
+  {
+    "id": "corbin",
+    "label": "肖恩·柯宾",
+    "type": "character",
+    "d": "物理学家，死球理论的提出者。"
+  },
+  {
+    "id": "loan",
+    "label": "洛安",
+    "type": "character",
+    "d": "查理在远古战场醒来时所在的身体——一名普通幸存者。"
+  },
+  {
+    "id": "e1947",
+    "label": "罗斯威尔坠毁（1947）",
+    "type": "event",
+    "d": "军方获得意识接口残骸。一切的起点。"
+  },
+  {
+    "id": "e2047",
+    "label": "技术释放（2047）",
+    "type": "event",
+    "d": "百年逆向工程的成果，以「意识接口革命」的形式进入公众世界。"
+  },
+  {
+    "id": "e2053",
+    "label": "黑潮（2053）",
+    "type": "event",
+    "d": "物质文明信仰崩塌，意识产业兴起。"
+  },
+  {
+    "id": "e2118",
+    "label": "矫正事故（2118）",
+    "type": "event",
+    "d": "第二次数字矫正异常。吉姆带回记忆，安娜与查理没有醒来。"
+  },
+  {
+    "id": "ecount",
+    "label": "解构倒计时",
+    "type": "event",
+    "d": "月暗系统将安娜与查理判定为异常意识——并开始解构。"
+  },
+  {
+    "id": "emoon",
+    "label": "月面肉体死亡",
+    "type": "event",
+    "d": "吉姆在月球暗面完成肉体死亡，进入真实的泰拉撒记录。"
+  },
+  {
+    "id": "ewar",
+    "label": "法厄同终战",
+    "type": "event",
+    "d": "围绕地球未来与生命实验权的太阳系战争的最后一战。"
+  },
+  {
+    "id": "efall",
+    "label": "巨鲸坠落",
+    "type": "event",
+    "d": "一头星舰般的巨鲸自天而降，撕裂了法厄同星。"
+  },
+  {
+    "id": "cabin",
+    "label": "灵接舱",
+    "type": "concept",
+    "d": "表面是矫正与数字永生设备，本质是低阶意识接口。"
+  },
+  {
+    "id": "twin",
+    "label": "双生模式",
+    "type": "concept",
+    "d": "肉体与数字生命并行发展，按年龄节点同步。"
+  },
+  {
+    "id": "core",
+    "label": "主体核",
+    "type": "concept",
+    "d": "信息可以复制；主体核只能迁移，永不可复制。"
+  },
+  {
+    "id": "dead",
+    "label": "死球理论",
+    "type": "concept",
+    "d": "「死亡地点决定意识去向」的危险假说。"
+  },
+  {
+    "id": "terasa",
+    "label": "泰拉撒记录",
+    "type": "concept",
+    "d": "月球暗面的古老记录系统，长期归档地球生命的演化。"
+  },
+  {
+    "id": "luna",
+    "label": "LUNA-EXIT",
+    "type": "concept",
+    "d": "斯皮尔的封存计划：终点不是保存，而是迁出。"
+  },
+  {
+    "id": "roswell",
+    "label": "罗斯威尔接口",
+    "type": "concept",
+    "d": "不靠机械驾驶、由意识结构直接耦合的非物质接口。"
+  },
+  {
+    "id": "song",
+    "label": "蓝鲸歌声",
+    "type": "concept",
+    "d": "封进海洋生命链的种子，一段低频的记忆回声。"
+  },
+  {
+    "id": "whalekind",
+    "label": "巨鲸族",
+    "type": "concept",
+    "d": "星海的记忆载体，活的文明档案库。"
+  },
+  {
+    "id": "five",
+    "label": "五族",
+    "type": "concept",
+    "d": "日辉、鳞裔、节肢、渊民、震翼——战争中的五个族群。"
+  },
+  {
+    "id": "incub",
+    "label": "地球孵化场",
+    "type": "concept",
+    "d": "在远古各族眼中，地球是一场正在成形的生命实验。"
+  },
+  {
+    "id": "cat",
+    "label": "灵猫文明",
+    "type": "concept",
+    "d": "动物意识的高阶网络，那里的时间不走直线。（档案 III 伏笔）"
+  }
+],
+  links:[["b1", "jim"], ["b1", "e2118"], ["b1", "elara"], ["b1", "terasa"], ["b1", "emoon"], ["b1", "ecount"], ["b2", "charlie"], ["b2", "ewar"], ["b2", "efall"], ["b2", "loan"], ["b2", "five"], ["jim", "djim"], ["jim", "anna"], ["jim", "charlie"], ["jim", "e2118"], ["jim", "elara"], ["jim", "emoon"], ["jim", "lune"], ["jim", "spire"], ["djim", "terasa"], ["djim", "core"], ["anna", "e2118"], ["anna", "cat"], ["anna", "ecount"], ["charlie", "e2118"], ["charlie", "loan"], ["charlie", "efall"], ["charlie", "ecount"], ["charlie", "song"], ["elara", "terasa"], ["elara", "ecount"], ["spire", "luna"], ["spire", "arthur"], ["spire", "cabin"], ["lune", "cabin"], ["lune", "e2118"], ["arthur", "core"], ["arthur", "cabin"], ["corbin", "dead"], ["dead", "emoon"], ["luna", "emoon"], ["cabin", "twin"], ["cabin", "roswell"], ["twin", "e2118"], ["twin", "core"], ["roswell", "e1947"], ["e1947", "e2047"], ["e2047", "e2053"], ["e2053", "cabin"], ["terasa", "incub"], ["ewar", "five"], ["ewar", "incub"], ["ewar", "efall"], ["whalekind", "efall"], ["whalekind", "song"], ["cat", "terasa"]]
+};
+var graphInited = false;
+function showView(which){
+  document.getElementById('view-line').style.display = which==='line' ? '' : 'none';
+  document.getElementById('view-graph').style.display = which==='graph' ? '' : 'none';
+  document.getElementById('tab-line').classList.toggle('active', which==='line');
+  document.getElementById('tab-graph').classList.toggle('active', which==='graph');
+  if(which==='graph' && !graphInited){ graphInited = true; initStoryGraph(GRAPH); }
+}
+document.getElementById('tab-line').addEventListener('click', function(){ showView('line'); });
+document.getElementById('tab-graph').addEventListener('click', function(){ showView('graph'); });
 </script>

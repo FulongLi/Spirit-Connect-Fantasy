@@ -45,6 +45,25 @@ permalink: /anotherworld/storylines/
   .sl-books{flex:1 1 auto;flex-direction:row;flex-wrap:wrap;width:100%}
   .sl-book{flex:1 1 260px}
 }
+
+.sl-views{display:flex;gap:.6rem;margin-bottom:1.5rem}
+.sl-view{padding:.5rem 1.3rem;border-radius:999px;border:1px solid var(--border);
+  background:var(--card);color:var(--muted);cursor:pointer;font-family:inherit;
+  font-size:.92rem;transition:all .25s ease}
+.sl-view:hover{border-color:var(--brand);color:var(--fg)}
+.sl-view.active{border-color:var(--brand);color:var(--brand);box-shadow:0 0 18px rgba(0,229,255,.15)}
+.sg-mount{position:relative;border:1px solid var(--border);border-radius:var(--radius);
+  background:rgba(10,18,32,.5);overflow:hidden}
+.sg-canvas{display:block;cursor:grab}
+.sg-chips{position:absolute;top:.8rem;left:.9rem;z-index:2;display:flex;gap:.5rem;flex-wrap:wrap}
+.sg-chip{display:flex;align-items:center;gap:.4rem;padding:.28rem .75rem;border-radius:999px;
+  border:1px solid var(--border);background:rgba(15,27,45,.85);color:var(--muted);
+  font-size:.75rem;cursor:pointer;font-family:inherit;transition:all .2s ease}
+.sg-chip.active{color:var(--fg);border-color:rgba(0,229,255,.35)}
+.sg-chip:not(.active){opacity:.4}
+.sg-chip-dot{width:9px;height:9px;border-radius:50%;display:inline-block}
+.sg-tip{position:absolute;bottom:.7rem;right:.95rem;z-index:2;color:var(--muted);
+  font-size:.72rem;opacity:.8;pointer-events:none}
 </style>
 
 <header class="hero" style="padding: 5rem 0 3rem;">
@@ -62,12 +81,24 @@ permalink: /anotherworld/storylines/
 
 <section class="section">
   <div class="container">
+    <div class="sl-views">
+      <button type="button" id="tab-line" class="sl-view active">Story Lines</button>
+      <button type="button" id="tab-graph" class="sl-view">Relation Graph</button>
+    </div>
+    <div id="view-line">
     <div class="sl-wrap">
       <div class="sl-books" id="sl-list" aria-label="Archives"></div>
       <div class="sl-stage">
         <div class="sl-canvas" id="sl-canvas"></div>
         <div class="sl-detail" id="sl-detail"></div>
       </div>
+    </div>
+    </div>
+    <div id="view-graph" style="display:none">
+      <div id="sg-mount" class="sg-mount">
+        <div class="sg-tip">Drag nodes · Scroll to zoom · Drag space to pan</div>
+      </div>
+      <div class="sl-detail" id="sg-detail"></div>
     </div>
   </div>
 </section>
@@ -148,4 +179,224 @@ initStorylines({
     }
   ]
 });
+</script>
+
+<script src="{{ '/assets/storygraph.js' | relative_url }}"></script>
+<script>
+var GRAPH = {
+  mountId:'sg-mount', detailId:'sg-detail', height:620,
+  hint:"Click a node to read about it; hover to light up its connections.",
+  connLabel:"connections",
+  types:{
+    book:{label:"Books",color:'#5ef9ff'},
+    character:{label:"Characters",color:'#ffb454'},
+    event:{label:"Events",color:'#a78bfa'},
+    concept:{label:"Concepts",color:'#4dd0a1'}
+  },
+  nodes:[
+  {
+    "id": "b1",
+    "label": "The Dark Side of the Moon",
+    "type": "book",
+    "d": "Archive I · The First Door. Jim's accident, the investigation, and the Moon. The entrance to the series."
+  },
+  {
+    "id": "b2",
+    "label": "The Fall of the Giant Whale",
+    "type": "book",
+    "d": "Archive II · The Phaethon Testimony. Charlie's witness of the ancient war."
+  },
+  {
+    "id": "jim",
+    "label": "Jim Vale",
+    "type": "character",
+    "d": "Opener of the first door. The first to fully reach the lunar far side — and return."
+  },
+  {
+    "id": "djim",
+    "label": "Digital Jim",
+    "type": "character",
+    "d": "Jim's digital twin, left in the deep of Terasa. The entrance to the Subject Core problem."
+  },
+  {
+    "id": "anna",
+    "label": "Anna Lewis",
+    "type": "character",
+    "d": "The reader of rules. Trapped in a region of non-human consciousness — the entrance to Spirit Cat."
+  },
+  {
+    "id": "charlie",
+    "label": "Charlie Hale",
+    "type": "character",
+    "d": "The most ordinary of witnesses. Trapped inside the record of the Phaethon war."
+  },
+  {
+    "id": "elara",
+    "label": "Elara",
+    "type": "character",
+    "d": "The little girl is only a projection. She helps Jim — her allegiance is an open question."
+  },
+  {
+    "id": "spire",
+    "label": "Elias Spire",
+    "type": "character",
+    "d": "Founder of Spirit Connect. Changed by the blood-red cruise; origin of the obsession with migration."
+  },
+  {
+    "id": "lune",
+    "label": "Adrian Lune",
+    "type": "character",
+    "d": "The ethics witness on the reality side. Standing rule: a person is not a sample."
+  },
+  {
+    "id": "arthur",
+    "label": "Arthur Wheeler",
+    "type": "character",
+    "d": "Spire's old friend, among the first ever uploaded. His stagnation is key evidence for the Subject Core."
+  },
+  {
+    "id": "corbin",
+    "label": "Shawn Corbin",
+    "type": "character",
+    "d": "Physicist. Author of the Dead Sphere Theory."
+  },
+  {
+    "id": "loan",
+    "label": "Loan",
+    "type": "character",
+    "d": "The host body Charlie wakes in — an ordinary survivor of the ancient war."
+  },
+  {
+    "id": "e1947",
+    "label": "Roswell Crash (1947)",
+    "type": "event",
+    "d": "The military recovers a consciousness-interface wreck. Where everything begins."
+  },
+  {
+    "id": "e2047",
+    "label": "The Release (2047)",
+    "type": "event",
+    "d": "A century of reverse engineering surfaces as the “consciousness interface revolution”."
+  },
+  {
+    "id": "e2053",
+    "label": "Black Tide (2053)",
+    "type": "event",
+    "d": "Faith in material civilization collapses; the consciousness industry rises."
+  },
+  {
+    "id": "e2118",
+    "label": "The Correction Incident (2118)",
+    "type": "event",
+    "d": "The second calibration goes wrong. Jim returns with memories; Anna and Charlie do not wake."
+  },
+  {
+    "id": "ecount",
+    "label": "The Deconstruction Countdown",
+    "type": "event",
+    "d": "The lunar system reads Anna and Charlie as anomalies — and begins to deconstruct them."
+  },
+  {
+    "id": "emoon",
+    "label": "Death on the Moon",
+    "type": "event",
+    "d": "Jim completes his bodily death on the far side and enters the true Terasa Records."
+  },
+  {
+    "id": "ewar",
+    "label": "The Phaethon War",
+    "type": "event",
+    "d": "The last battle of a solar-system war over Earth's future and the right to its life experiment."
+  },
+  {
+    "id": "efall",
+    "label": "The Whale Falls",
+    "type": "event",
+    "d": "A starship-like whale descends from the sky, tearing Phaethon apart."
+  },
+  {
+    "id": "cabin",
+    "label": "The Connection Cabin",
+    "type": "concept",
+    "d": "Officially a correction and preservation device; in truth, a low-order consciousness interface."
+  },
+  {
+    "id": "twin",
+    "label": "Twin Mode",
+    "type": "concept",
+    "d": "Physical and digital lives developing in parallel, synchronized at age nodes."
+  },
+  {
+    "id": "core",
+    "label": "Subject Core",
+    "type": "concept",
+    "d": "Information can be copied. The Subject Core can only migrate — never be copied."
+  },
+  {
+    "id": "dead",
+    "label": "Dead Sphere Theory",
+    "type": "concept",
+    "d": "The dangerous hypothesis that where you die decides where consciousness can go."
+  },
+  {
+    "id": "terasa",
+    "label": "Terasa Records",
+    "type": "concept",
+    "d": "The ancient recording system on the lunar far side, archiving the evolution of Earth's life."
+  },
+  {
+    "id": "luna",
+    "label": "LUNA-EXIT",
+    "type": "concept",
+    "d": "Spire's sealed program: the endpoint is not preservation, but migration."
+  },
+  {
+    "id": "roswell",
+    "label": "The Roswell Interface",
+    "type": "concept",
+    "d": "A craft piloted not by machinery, but by direct coupling of consciousness."
+  },
+  {
+    "id": "song",
+    "label": "The Whale Song",
+    "type": "concept",
+    "d": "The seed sealed into the ocean's chain of life; a low-frequency echo of memory."
+  },
+  {
+    "id": "whalekind",
+    "label": "The Whale-Kind",
+    "type": "concept",
+    "d": "Memory vessels of the star sea; the living archives of a civilization."
+  },
+  {
+    "id": "five",
+    "label": "The Five Peoples",
+    "type": "concept",
+    "d": "Sunbright, Scale-Kin, Chitinous, Abyssals, Wing-Shiver — the five peoples of the war."
+  },
+  {
+    "id": "incub",
+    "label": "The Earth Incubator",
+    "type": "concept",
+    "d": "The forming experiment of life, as the ancient peoples saw the Earth."
+  },
+  {
+    "id": "cat",
+    "label": "The Spirit-Cat Network",
+    "type": "concept",
+    "d": "A higher network of animal consciousness, where time is not a line. (Archive III seed)"
+  }
+],
+  links:[["b1", "jim"], ["b1", "e2118"], ["b1", "elara"], ["b1", "terasa"], ["b1", "emoon"], ["b1", "ecount"], ["b2", "charlie"], ["b2", "ewar"], ["b2", "efall"], ["b2", "loan"], ["b2", "five"], ["jim", "djim"], ["jim", "anna"], ["jim", "charlie"], ["jim", "e2118"], ["jim", "elara"], ["jim", "emoon"], ["jim", "lune"], ["jim", "spire"], ["djim", "terasa"], ["djim", "core"], ["anna", "e2118"], ["anna", "cat"], ["anna", "ecount"], ["charlie", "e2118"], ["charlie", "loan"], ["charlie", "efall"], ["charlie", "ecount"], ["charlie", "song"], ["elara", "terasa"], ["elara", "ecount"], ["spire", "luna"], ["spire", "arthur"], ["spire", "cabin"], ["lune", "cabin"], ["lune", "e2118"], ["arthur", "core"], ["arthur", "cabin"], ["corbin", "dead"], ["dead", "emoon"], ["luna", "emoon"], ["cabin", "twin"], ["cabin", "roswell"], ["twin", "e2118"], ["twin", "core"], ["roswell", "e1947"], ["e1947", "e2047"], ["e2047", "e2053"], ["e2053", "cabin"], ["terasa", "incub"], ["ewar", "five"], ["ewar", "incub"], ["ewar", "efall"], ["whalekind", "efall"], ["whalekind", "song"], ["cat", "terasa"]]
+};
+var graphInited = false;
+function showView(which){
+  document.getElementById('view-line').style.display = which==='line' ? '' : 'none';
+  document.getElementById('view-graph').style.display = which==='graph' ? '' : 'none';
+  document.getElementById('tab-line').classList.toggle('active', which==='line');
+  document.getElementById('tab-graph').classList.toggle('active', which==='graph');
+  if(which==='graph' && !graphInited){ graphInited = true; initStoryGraph(GRAPH); }
+}
+document.getElementById('tab-line').addEventListener('click', function(){ showView('line'); });
+document.getElementById('tab-graph').addEventListener('click', function(){ showView('graph'); });
 </script>
