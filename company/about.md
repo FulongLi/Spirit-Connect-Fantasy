@@ -80,6 +80,8 @@ permalink: /company/about/
           At Spirit Connect Technology, we believe that death is not the end. With our revolutionary 
           consciousness transfer technology, you can preserve your essence, your memories, and your consciousness 
           in the digital world, ensuring that who you are continues to exist, learn, and grow indefinitely.
+          A colleague of our founder once asked whether the exit was really inside a machine.
+          We have kept her question.
         </p>
         <div class="case-study-actions" style="margin-top: 2rem;">
           <a href="{{ '/products/cabin-sc1/' | relative_url }}" class="btn btn-primary">Explore Our Products</a>

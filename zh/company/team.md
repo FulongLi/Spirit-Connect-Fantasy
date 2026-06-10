@@ -23,28 +23,28 @@ description: 认识灵接科技背后的团队。
     <p class="lead">董事会为灵接科技提供战略指引与监督。</p>
     <div class="grid" style="margin-top: 2rem;">
       <div class="card" style="text-align:center;">
-        <img src="{{ '/images/team/long_spiricon.jpg' | relative_url }}" alt="Long L Spiricon" style="width:150px;height:150px;border-radius:50%;object-fit:cover;margin-bottom:1.5rem;border:3px solid var(--brand);">
-        <h3>Long L Spiricon</h3>
+        <img src="{{ '/images/team/long_spiricon.jpg' | relative_url }}" alt="Elias Spire" style="width:150px;height:150px;border-radius:50%;object-fit:cover;margin-bottom:1.5rem;border:3px solid var(--brand);">
+        <h3>Elias Spire</h3>
         <p><strong>创始人</strong></p>
-        <p>已退休。灵接科技创始成员。</p>
+        <p>已退休。灵接科技创始成员。其现居地不属于公开记录范畴。</p>
       </div>
       <div class="card" style="text-align:center;">
         <img src="{{ '/images/team/na_li.jpg' | relative_url }}" alt="Na Li" style="width:150px;height:150px;border-radius:50%;object-fit:cover;margin-bottom:1.5rem;border:3px solid var(--brand);">
         <h3>Na Li</h3>
-        <p><strong>Spiricon 私人助理</strong></p>
+        <p><strong>Spire 私人助理</strong></p>
         <p>协助创始人推进战略与运营事务。</p>
       </div>
       <div class="card" style="text-align:center;">
-        <img src="{{ '/images/team/shawn_corbin.jpg' | relative_url }}" alt="Shawn L Corbin" style="width:150px;height:150px;border-radius:50%;object-fit:cover;margin-bottom:1.5rem;border:3px solid var(--brand);">
-        <h3>Shawn L Corbin</h3>
+        <img src="{{ '/images/team/shawn_corbin.jpg' | relative_url }}" alt="Shawn Corbin" style="width:150px;height:150px;border-radius:50%;object-fit:cover;margin-bottom:1.5rem;border:3px solid var(--brand);">
+        <h3>Shawn Corbin</h3>
         <p><strong>物理学家</strong></p>
-        <p>Spiricon 大学。物理学与意识研究专家。</p>
+        <p>Spire 大学。物理学与意识研究专家。</p>
       </div>
       <div class="card" style="text-align:center;">
-        <img src="{{ '/images/team/paul_cross.jpg' | relative_url }}" alt="Paul J. Cross" style="width:150px;height:150px;border-radius:50%;object-fit:cover;margin-bottom:1.5rem;border:3px solid var(--brand);">
-        <h3>Paul J. Cross</h3>
+        <img src="{{ '/images/team/paul_cross.jpg' | relative_url }}" alt="Paul Cross" style="width:150px;height:150px;border-radius:50%;object-fit:cover;margin-bottom:1.5rem;border:3px solid var(--brand);">
+        <h3>Paul Cross</h3>
         <p><strong>教授</strong></p>
-        <p>Spiricon 大学。意识传输技术领域领军学者。</p>
+        <p>Spire 大学。意识传输技术领域领军学者。</p>
       </div>
     </div>
   </div>
@@ -62,10 +62,10 @@ description: 认识灵接科技背后的团队。
         <p>引领灵接科技的愿景与战略。</p>
       </div>
       <div class="card" style="text-align:center;">
-        <img src="{{ '/images/team/morph_lune.jpg' | relative_url }}" alt="Morph Lune" style="width:150px;height:150px;border-radius:50%;object-fit:cover;margin-bottom:1.5rem;border:3px solid var(--brand);">
-        <h3>Morph Lune, PhD</h3>
+        <img src="{{ '/images/team/morph_lune.jpg' | relative_url }}" alt="Adrian Lune" style="width:150px;height:150px;border-radius:50%;object-fit:cover;margin-bottom:1.5rem;border:3px solid var(--brand);">
+        <h3>Adrian Lune, PhD</h3>
         <p><strong>首席技术官</strong></p>
-        <p>负责技术研发与创新方向。</p>
+        <p>负责技术研发与创新方向。公司内部人尽皆知他的一条铁律：人不是样本。</p>
       </div>
       <div class="card" style="text-align:center;">
         <img src="{{ '/images/team/jane_zhang.jpg' | relative_url }}" alt="Jane Zhang" style="width:150px;height:150px;border-radius:50%;object-fit:cover;margin-bottom:1.5rem;border:3px solid var(--brand);">
@@ -83,19 +83,22 @@ description: 认识灵接科技背后的团队。
     <p class="lead">实习项目为新一代研究者与工程师提供机会。</p>
     <div class="grid" style="margin-top: 2rem;">
       <div class="card" style="text-align:center;">
-        <img src="{{ '/images/team/jim_dickens.jpg' | relative_url }}" alt="Jim Dickens" style="width:150px;height:150px;border-radius:50%;object-fit:cover;margin-bottom:1.5rem;border:3px solid var(--brand);">
-        <h3>Jim Dickens</h3>
+        <img src="{{ '/images/team/jim_dickens.jpg' | relative_url }}" alt="Jim Vale" style="width:150px;height:150px;border-radius:50%;object-fit:cover;margin-bottom:1.5rem;border:3px solid var(--brand);">
+        <h3>Jim Vale</h3>
         <p><strong>学生实习</strong></p>
+        <p class="small">状态：在岗。2118 年矫正参与者中唯一恢复工作的人。</p>
       </div>
       <div class="card" style="text-align:center;">
         <img src="{{ '/images/team/anna_lewis.jpg' | relative_url }}" alt="Anna Lewis" style="width:150px;height:150px;border-radius:50%;object-fit:cover;margin-bottom:1.5rem;border:3px solid var(--brand);">
         <h3>Anna Lewis</h3>
         <p><strong>学生实习</strong></p>
+        <p class="small">状态：长期病休。同事们说，她从没有读到一半的规则手册。</p>
       </div>
       <div class="card" style="text-align:center;">
-        <img src="{{ '/images/team/charlie_filler.jpg' | relative_url }}" alt="Charlie Filler" style="width:150px;height:150px;border-radius:50%;object-fit:cover;margin-bottom:1.5rem;border:3px solid var(--brand);">
-        <h3>Charlie Filler</h3>
+        <img src="{{ '/images/team/charlie_filler.jpg' | relative_url }}" alt="Charlie Hale" style="width:150px;height:150px;border-radius:50%;object-fit:cover;margin-bottom:1.5rem;border:3px solid var(--brand);">
+        <h3>Charlie Hale</h3>
         <p><strong>学生实习</strong></p>
+        <p class="small">状态：长期病休。他的工位保持着他离开时的原样。</p>
       </div>
     </div>
   </div>

@@ -39,7 +39,16 @@ description: 灵接科技相关概念、术语与知识百科。
     <ul class="lead" style="margin-top: 1.5rem; line-height: 2; list-style-position: inside;">
       <li><a href="{{ '/zh/spicopedia/1947-roswell-ufo-crash/' | relative_url }}">1947 罗斯威尔飞碟坠毁事件</a></li>
       <li><a href="{{ '/zh/spicopedia/dulce-war/' | relative_url }}">道西战争</a></li>
+      <li><a href="{{ '/zh/spicopedia/phaethon/' | relative_url }}">法厄同星</a></li>
+      <li><a href="{{ '/zh/spicopedia/black-tide-2053/' | relative_url }}">黑潮（2053）</a></li>
+      <li><a href="{{ '/zh/spicopedia/whale-echo/' | relative_url }}">鲸歌回声</a></li>
+      <li><a href="{{ '/zh/spicopedia/ihindia/' | relative_url }}">IHinDiA</a></li>
       <li><a href="{{ '/zh/spicopedia/oil-deception/' | relative_url }}">石油骗局</a></li>
+      <li><a href="{{ '/zh/spicopedia/lunar-death-hypothesis/' | relative_url }}">死球理论</a></li>
+      <li><a href="{{ '/zh/spicopedia/twin-mode/' | relative_url }}">双生模式</a></li>
+      <li><a href="{{ '/zh/spicopedia/digital-calibration/' | relative_url }}">数字矫正</a></li>
+      <li><a href="{{ '/zh/spicopedia/terasa-records/' | relative_url }}">泰拉撒记录</a></li>
+      <li><a href="{{ '/zh/spicopedia/subject-core/' | relative_url }}">主体核</a></li>
     </ul>
   </div>
 </section>

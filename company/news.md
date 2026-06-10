@@ -22,6 +22,16 @@ description: Latest updates and announcements from Spirit Connect Technology.
     <h2>2118</h2>
     <div class="card" style="margin-bottom: 1.5rem;">
       <span class="small">2118</span>
+      <h3>Statement on the Non-Standard Connection Event</h3>
+      <p>
+        During a routine second-stage digital calibration session, a non-standard connection event occurred
+        at one of our facilities. All participants are stable and under continuous care. IHinDiA has been
+        notified in accordance with regulation. There is no risk to other users, and there is nothing on the
+        far side of this event that concerns the public.
+      </p>
+    </div>
+    <div class="card" style="margin-bottom: 1.5rem;">
+      <span class="small">2118</span>
       <h3>Spirit Connect Event</h3>
       <p>
         Held the Spirit Connect event, showcasing our latest innovations in consciousness transfer technology 
@@ -65,6 +75,17 @@ description: Latest updates and announcements from Spirit Connect Technology.
       </p>
     </div>
 
+    <h2>2100</h2>
+    <div class="card" style="margin-bottom: 1.5rem;">
+      <span class="small">2100</span>
+      <h3>Twin Mode Receives Full IHinDiA Certification</h3>
+      <p>
+        Twin Mode — the parallel development of a physical life and a digital life, synchronized at fixed
+        age nodes — receives full IHinDiA certification, marking the maturity of digital continuity as
+        public infrastructure.
+      </p>
+    </div>
+
     <h2>2098</h2>
     <div class="card" style="margin-bottom: 1.5rem;">
       <span class="small">2098</span>
@@ -103,6 +124,16 @@ description: Latest updates and announcements from Spirit Connect Technology.
       </p>
     </div>
 
+    <h2>2053</h2>
+    <div class="card" style="margin-bottom: 1.5rem;">
+      <span class="small">2053</span>
+      <h3>Operations Suspended — Black Tide</h3>
+      <p>
+        Following the outbreak of the global conflict later known as the Black Tide, all operations were
+        suspended. What survived of the company during these years was not its assets, but its question.
+      </p>
+    </div>
+
     <h2>2052</h2>
     <div class="card" style="margin-bottom: 1.5rem;">
       <span class="small">2052</span>
@@ -119,6 +150,17 @@ description: Latest updates and announcements from Spirit Connect Technology.
       <p>
         Spirit Connect Technology was founded, beginning our journey to pioneer consciousness 
         preservation and digital existence.
+      </p>
+    </div>
+
+    <h2>2047</h2>
+    <div class="card" style="margin-bottom: 1.5rem;">
+      <span class="small">2047 · Industry context</span>
+      <h3>The Consciousness Interface Revolution</h3>
+      <p>
+        Three years before our founding, the 2047 release of consciousness interface technology transformed
+        neuroscience, computing, and the question of what a person is. Our founders were among the first
+        civilian researchers granted access to the released interface standards.
       </p>
     </div>
   </div>

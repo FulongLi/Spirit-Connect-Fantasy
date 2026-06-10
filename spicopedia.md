@@ -38,9 +38,18 @@ permalink: /spicopedia/
       Articles in the Spicopedia folder are listed below in alphabetical order by title (A–Z).
     </p>
     <ul class="lead" style="margin-top: 1.5rem; line-height: 2; list-style-position: inside;">
+      <li><a href="{{ '/spicopedia/black-tide-2053/' | relative_url }}">Black Tide (2053)</a></li>
+      <li><a href="{{ '/spicopedia/digital-calibration/' | relative_url }}">Digital Calibration</a></li>
       <li><a href="{{ '/spicopedia/dulce-war/' | relative_url }}">Dulce War</a></li>
+      <li><a href="{{ '/spicopedia/ihindia/' | relative_url }}">IHinDiA</a></li>
+      <li><a href="{{ '/spicopedia/lunar-death-hypothesis/' | relative_url }}">Lunar Death Hypothesis</a></li>
       <li><a href="{{ '/spicopedia/oil-deception/' | relative_url }}">Oil Deception</a></li>
+      <li><a href="{{ '/spicopedia/phaethon/' | relative_url }}">Phaethon</a></li>
       <li><a href="{{ '/spicopedia/1947-roswell-ufo-crash/' | relative_url }}">Roswell UFO Crash (1947)</a></li>
+      <li><a href="{{ '/spicopedia/subject-core/' | relative_url }}">Subject Core</a></li>
+      <li><a href="{{ '/spicopedia/terasa-records/' | relative_url }}">Terasa Records</a></li>
+      <li><a href="{{ '/spicopedia/twin-mode/' | relative_url }}">Twin Mode</a></li>
+      <li><a href="{{ '/spicopedia/whale-echo/' | relative_url }}">Whale Echo</a></li>
     </ul>
   </div>
 </section>

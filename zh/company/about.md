@@ -68,6 +68,7 @@ description: 了解灵接科技与我们的使命。
         </p>
         <p style="margin-top: 1.5rem; color: rgba(255,255,255,.9);">
           在灵接科技，我们相信死亡不是终点。借助革命性意识传输技术，你可在数字世界保存本质、记忆与意识，让「你」持续存在、学习与成长。
+          创始人的一位故友曾经问过：出口真的在机器里吗？这个问题，我们一直留着。
         </p>
         <div class="case-study-actions" style="margin-top: 2rem;">
           <a href="{{ '/zh/products/cabin-sc1/' | relative_url }}" class="btn btn-primary">了解产品</a>

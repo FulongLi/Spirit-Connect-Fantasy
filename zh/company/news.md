@@ -22,6 +22,15 @@ description: 灵接科技的最新动态与公告。
     <h2>2118</h2>
     <div class="card" style="margin-bottom: 1.5rem;">
       <span class="small">2118</span>
+      <h3>关于非标准连接事件的声明</h3>
+      <p>
+        在一次例行的第二阶段数字矫正中，我司某设施发生一起非标准连接事件。
+        所有参与者状态稳定，正在接受持续照护。我们已按规定向 IHinDiA 通报。
+        该事件不影响其他用户，事件的另一面也没有任何需要公众关心的东西。
+      </p>
+    </div>
+    <div class="card" style="margin-bottom: 1.5rem;">
+      <span class="small">2118</span>
       <h3>灵接盛典</h3>
       <p>
         举办灵接盛典，展示意识传输与数字存在平台的最新创新。
@@ -64,6 +73,16 @@ description: 灵接科技的最新动态与公告。
       </p>
     </div>
 
+    <h2>2100</h2>
+    <div class="card" style="margin-bottom: 1.5rem;">
+      <span class="small">2100</span>
+      <h3>双生模式获 IHinDiA 全面认证</h3>
+      <p>
+        双生模式——肉体生命与数字生命并行发展、按固定年龄节点同步——获得 IHinDiA 全面认证，
+        标志数字延续正式成为公共基础设施。
+      </p>
+    </div>
+
     <h2>2098</h2>
     <div class="card" style="margin-bottom: 1.5rem;">
       <span class="small">2098</span>
@@ -100,6 +119,16 @@ description: 灵接科技的最新动态与公告。
       </p>
     </div>
 
+    <h2>2053</h2>
+    <div class="card" style="margin-bottom: 1.5rem;">
+      <span class="small">2053</span>
+      <h3>业务中止——黑潮</h3>
+      <p>
+        随着后来被称为"黑潮"的全球冲突爆发，公司全部业务中止。
+        那些年里幸存下来的不是公司的资产，而是它的问题。
+      </p>
+    </div>
+
     <h2>2052</h2>
     <div class="card" style="margin-bottom: 1.5rem;">
       <span class="small">2052</span>
@@ -115,6 +144,17 @@ description: 灵接科技的最新动态与公告。
       <h3>创立</h3>
       <p>
         灵接科技创立，开启保存人类意识与数字存在的探索之旅。
+      </p>
+    </div>
+
+    <h2>2047</h2>
+    <div class="card" style="margin-bottom: 1.5rem;">
+      <span class="small">2047 · 行业背景</span>
+      <h3>意识接口革命</h3>
+      <p>
+        在我们创立的三年前，2047 年意识接口技术的公开释放，
+        彻底改变了神经科学、计算技术，以及"人是什么"这个问题本身。
+        我们的创始人是最早获准接触已释放接口标准的民间研究者之一。
       </p>
     </div>
   </div>
