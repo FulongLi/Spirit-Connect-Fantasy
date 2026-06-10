@@ -427,7 +427,7 @@ permalink: /zh/another-world/
       <p class="lead">
         开启数字存在之旅：联系我们，了解「另一世界」以及如何为进入这一革命性虚拟现实平台做好准备。
       </p>
-      <a href="{{ '/zh/contact/' | relative_url }}" class="btn btn-primary btn-large">开始使用</a>
+      <a href="{{ '/zh/anotherworld/storylines/' | relative_url }}" class="btn btn-primary btn-large">开始使用</a>
     </div>
   </div>
 </section>

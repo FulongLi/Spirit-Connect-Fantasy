@@ -465,7 +465,7 @@ permalink: /another-world/
         Begin your journey into digital existence. Contact us to learn more about Another World and 
         how to prepare your consciousness for entry into this revolutionary virtual reality platform.
       </p>
-      <a href="{{ '/contact/' | relative_url }}" class="btn btn-primary btn-large">Get Started</a>
+      <a href="{{ '/anotherworld/storylines/' | relative_url }}" class="btn btn-primary btn-large">Get Started</a>
     </div>
   </div>
 </section>
