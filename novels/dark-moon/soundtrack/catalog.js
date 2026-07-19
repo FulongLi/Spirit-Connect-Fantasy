@@ -10,14 +10,14 @@ window.darkMoonSoundtrack = [
     file: "audio/city-that-ages-with-my-steps.mp3"
   },
   {
-    id: "echoes-of-a-fallen-empire",
+    id: "moon-kingdom",
     number: "02",
-    title: { zh: "陨落帝国的回响", en: "Echoes of a Fallen Empire" },
-    mood: { zh: "废墟回响 · 覆灭的帝国 · 远古余音", en: "Echoes through ruins · A fallen empire · Ancient resonance" },
+    title: { zh: "月之国", en: "Moon Kingdom" },
+    mood: { zh: "月之国 · 暗面深处 · 沉睡的国度", en: "Kingdom of the Moon · Deep in the dark side · A sleeping realm" },
     duration: "3:00",
     chapter: "21",
-    src: "audio/echoes-of-a-fallen-empire.mp3",
-    file: "audio/echoes-of-a-fallen-empire.mp3"
+    src: "audio/moon-kingdom.mp3",
+    file: "audio/moon-kingdom.mp3"
   },
   {
     id: "terasha-record",
