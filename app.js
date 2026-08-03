@@ -32,8 +32,8 @@ const books = [
     cover: { zh: "assets/WF_cn.png", en: "assets/WF_en.png" },
     link: "novels/whale-fall/",
     description: {
-      zh: "文明从不只由技术定义。每一代人都会依照自己的审美，为繁荣赋予形状，也为永恒规定尺度。物质的极大丰饶催生了巨构文明，而太阳帝国，则是它最壮丽的象征。它巍峨，恢宏，仿佛足以抵抗时间。我们曾相信它会永垂不朽。后来我们才明白：所谓不朽，往往只是身处盛世之中的人，对时间产生的一种错觉。",
-      en: "Civilization is never defined by technology alone. Every generation shapes prosperity according to its own aesthetic and sets its own measure for eternity. Material abundance gave rise to megastructure civilization, and the Solar Empire was its most magnificent embodiment: towering, monumental, seemingly able to withstand time itself. We once believed it would endure forever. Only later did we understand that immortality is often merely an illusion of time, born in those who live at the height of an age.",
+      zh: "文明从不只由技术定义，每一代智能都会依照自己的审美，为繁荣赋予形状，也为永恒规定尺度。物质的极大丰饶催生了巨构文明，而太阳帝国，则是它最壮丽的象征。它巍峨，恢宏，仿佛足以抵抗时间，我们都曾相信它会永垂不朽。",
+      en: "Civilization is never defined by technology alone. Every form of intelligence shapes prosperity according to its own aesthetic and sets its own measure for eternity. Material abundance gave rise to megastructure civilization, and the Solar Empire was its most magnificent embodiment. Towering and monumental, it seemed capable of defying time itself—and we all once believed it would endure forever.",
     },
   },
   {
@@ -47,8 +47,8 @@ const books = [
     cover: { zh: "assets/MC_cn.png", en: "assets/MC_en.png" },
     link: "novels/mystic-cat/",
     description: {
-      zh: "安娜被困在非人类意识区域。记录边缘的森林里，有一只能够直视意识的猫影；那里的时间不走直线。",
-      en: "Anna is trapped in a non-human consciousness region. At the edge of the archive, a cat-shaped shadow can look directly into the mind.",
+      zh: "纵观人类千年，科技树如何生长，远不如你们本身有趣。宇宙的规律始终在那里，技术只是迟早会被发现的答案；而人的故事没有答案，也从不重复。你们以无数种方式活着，又以无数种方式赋予一生意义。这是我们圣灵一族从未拥有过的东西……",
+      en: "Looking across the millennia of human history, how your technology tree grows is far less fascinating than humanity itself. The laws of the universe have always been there, and technology is merely an answer waiting to be discovered sooner or later; human stories, however, have no answer, nor do they ever repeat. You live in countless ways and give meaning to a lifetime in just as many. This is something we, the Holy Spirits, have never possessed…",
     },
   },
   {
