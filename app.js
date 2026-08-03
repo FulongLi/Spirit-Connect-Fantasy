@@ -32,8 +32,8 @@ const books = [
     cover: { zh: "assets/WF_cn.png", en: "assets/WF_en.png" },
     link: "novels/whale-fall/",
     description: {
-      zh: "查理在一具陌生身体里醒来，脚下是尸山，天空中有一头巨鲸正在坠落。远古战争的尾声，将把地球生命、五族遗产与鲸歌回声重新连在一起。",
-      en: "Charlie wakes inside a stranger's body, standing on a mountain of the dead as a giant whale falls through the sky. The end of an ancient war reconnects Earth's life, the legacy of five peoples, and the echo of whale song.",
+      zh: "文明从不只由技术定义。每一代人都会依照自己的审美，为繁荣赋予形状，也为永恒规定尺度。物质的极大丰饶催生了巨构文明，而太阳帝国，则是它最壮丽的象征。它巍峨，恢宏，仿佛足以抵抗时间。我们曾相信它会永垂不朽。后来我们才明白：所谓不朽，往往只是身处盛世之中的人，对时间产生的一种错觉。",
+      en: "Civilization is never defined by technology alone. Every generation shapes prosperity according to its own aesthetic and sets its own measure for eternity. Material abundance gave rise to megastructure civilization, and the Solar Empire was its most magnificent embodiment: towering, monumental, seemingly able to withstand time itself. We once believed it would endure forever. Only later did we understand that immortality is often merely an illusion of time, born in those who live at the height of an age.",
     },
   },
   {
