@@ -1,0 +1,9 @@
+# Original manuscripts and working drafts are kept locally only until the author
+# has reviewed them for publication (see docs/MANUSCRIPT_WORKFLOW.md).
+/original-novel-texts/
+
+# Local tooling and OS noise
+.DS_Store
+.claude/
+server-*.log
+server-*.err

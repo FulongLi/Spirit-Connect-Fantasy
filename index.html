@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>灵接幻想档案</title>
     <meta name="description" content="灵接幻想小说档案的沉浸式展示原型。" />
-    <link rel="stylesheet" href="styles.css?v=20260620-12" />
+    <link rel="stylesheet" href="styles.css?v=20261020-1" />
   </head>
   <body data-theme="night" data-lang="zh">
     <canvas id="scene" aria-label="灵接幻想环形档案舱场景"></canvas>
+    <noscript><p class="noscript-note">灵接幻想档案需要启用 JavaScript。可直接阅读：<a href="novels/dark-moon/">月球暗面</a> · <a href="novels/whale-fall/">巨鲸陨落</a></p></noscript>
 
     <main id="scroll-stage">
       <div class="scroll-space"></div>
@@ -18,7 +19,7 @@
       <div class="brand" data-i18n="brand">灵接幻想</div>
       <nav class="nav">
         <a href="#archive-grid" data-i18n="navOverview">档案总览</a>
-        <a href="fantasy-content/zh/anotherworld/storylines.md" data-i18n="navStory">故事线</a>
+        <a href="#storylines" data-i18n="navStory">故事线</a>
       </nav>
       <div class="toolbar" aria-label="Display controls">
         <div class="segmented" aria-label="Language">
@@ -62,8 +63,7 @@
         <p class="eyebrow" data-i18n="archiveEyebrow">档案索引</p>
         <h2 id="archive-title" data-i18n="archiveTitle">灵接幻想书卷序列</h2>
         <p class="overview-lead" data-i18n="archiveLead">
-          先放入前三卷的明确入口，其余九座舱作为未来卷宗预留。后续你补正文、封面或章节时，
-          直接扩展数据即可让镜头继续接入。
+          六卷书按档案顺序排列。全文已上线的书卷可直接进入阅读，其余书卷仍在创作中。
         </p>
         <div class="archive-tabs" role="tablist" aria-label="Archive views">
           <button type="button" class="is-active" data-final-view="archive">书卷总览</button>
@@ -105,6 +105,6 @@
         }
       }
     </script>
-    <script type="module" src="app.js?v=20260620-12"></script>
+    <script type="module" src="app.js?v=20261020-1"></script>
   </body>
 </html>
