@@ -839,7 +839,7 @@ body[data-theme="day"] .sp-list button {
 
   .book-hero {
     min-height: auto;
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     padding-bottom: 38px;
   }
 
@@ -898,4 +898,11 @@ body[data-theme="day"] .sp-list button {
   .sp-bar {
     padding: 8px 10px;
   }
+}
+
+/* Long soundtrack titles must not widen the page on phones. */
+.hero-copy,
+.soundtrack-panel,
+.soundtrack-player {
+  min-width: 0;
 }

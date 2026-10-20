@@ -46,9 +46,15 @@ novels/<slug>/
 
 ```html
 <figure class="cover-stack" aria-label="<Book> covers">
-  <img class="cover-zh" src="../../assets/XX_cn.png" alt="中文封面" />
-  <img class="cover-en" src="../../assets/XX_en.png" alt="English cover" />
+  <img class="cover-zh" src="../../assets/web/XX_cn.jpg" alt="中文封面" />
+  <img class="cover-en" src="../../assets/web/XX_en.jpg" alt="English cover" />
 </figure>
+```
+
+网页一律引用 `assets/web/` 下的 1024px JPG(每张约 60–300 KB);`assets/XX_cn.png` 原图(每张 4–5 MB)只作母版保留。新增或替换封面后重新生成:
+
+```bash
+sips -s format jpeg -s formatOptions 82 -Z 1024 assets/XX_cn.png --out assets/web/XX_cn.jpg
 ```
 
 层级由 CSS 按 `body[data-lang]` 控制(复制 whale-fall 的规则即可),无需 JS:
@@ -115,19 +121,23 @@ body[data-lang="en"] .cover-stack .cover-zh { /* 后:top:92px; right:0; z-index:
   - 英文页只用 `Previous` / `Index` / `Next`;
   - 禁止使用 `上一章 / Previous`、`目录 / Index`、`下一章 / Next` 这种混合写法。
 - 中英文章节文件**同名**(都用 `NN_中文标题.html`),正文分别为中文 / 英文,方便语言切换时一一对应跳转。
+- Markdown 强调要完整转换,页面上不能残留 `*`:原稿里 `***系统提示***` 这类整行粗斜体写成 `<p class="system-line"><strong>…</strong></p>`,行内的写成 `<em><strong>…</strong></em>`。
 
 ### 5.1 版权信息页(第一页)
 
 - 每本书的**第一页(`00_…` 文件)固定为「版权信息」页**:`<h1>` 与 `<title>` 中文为「版权信息」、英文为「Copyright」。原来的"书名页/写作说明"等工程内容不对外展示,直接被版权信息替换。
-- 内容模板(中文,书名按本书替换;作者及其余信息保持一致):
+- 内容模板(中文,书名按本书替换):
 
   ```
-  书名：<本书中文名>     作者：李富龙     出版社：独立出版社     出版年份：2025-12
-  © 2025 李富龙     版权所有，侵权必究。
+  书名：<本书中文名>     作者：李富龙
+  出版：<仅填写已核实的出版信息，例如「独立出版」；未出版的书写「版本：网络阅读稿（尚未正式出版）」>
+  出版年份：<仅已出版的书填写，以实际上架日期为准>
+  © <首次发表年份> 李富龙     版权所有，侵权必究。
   未经作者书面许可，不得以任何形式复制、转载或传播本书内容。
-  ISBN：978-1-xxxxxx-xx
   ```
-  英文页同义翻译,书名用英文名、作者写 Fulong Li。
+  英文页同义翻译,书名用英文名、作者写 Fulong Li(出版写 `Publisher: Independently published` 或 `Edition: online reading draft (not yet formally published)`)。
+- **不要填写占位或推测的书目信息**:没有正式分配的 ISBN 就整行不写(不要写 `978-1-xxxxxx-xx`);出版社、出版日期只写能核实的内容。
+- 已核实信息(2026-10-20):《月球暗面》英文电子版在 Apple Books 上架,标注 Independently published,发行日期 2025-12-31,页面未显示 ISBN。《巨鲸陨落》尚未正式出版。
 - **不要**保留「灵接科技 / 书名 / 作者 著」这类标题页抬头三行,只留版权信息正文。
 
 ### 5.2 章节编号规则
@@ -174,12 +184,14 @@ window.<camelCaseSlug>Soundtrack = [
 ## 7. 新增一本小说的步骤
 
 1. 复制 `novels/whale-fall/` 为 `novels/<slug>/`。
-2. 改 `index.html`:书名、副标题、简介、章节目录、Soundtrack 标题、封面图路径(`XX_cn/en.png`)、aria-label。
+2. 改 `index.html`:书名、副标题、简介、章节目录、Soundtrack 标题、封面图路径(`../../assets/web/XX_cn/en.jpg`)、aria-label。
 3. 改 `assets/reader.js`:`copy.zh` / `copy.en` 全部文案;`storagePrefix`;`setupSoundtrack` 里的全局变量名 `window.<camelCaseSlug>Soundtrack`。
 4. 放入 `zh_html/` 与 `en_html/` 同名章节文件(底部单导航)。
 5. 写 `soundtrack/catalog.js` 与 `soundtrack/track-name-map.md`,音频放 `audio/`(英文文件名)。
-6. 准备封面 `assets/<XX>_cn.png` / `<XX>_en.png`。
-7. 自检:`node --check assets/reader.js`;首页中英切换、封面切换、音乐播放/列表展开均正常;章节页仅底部导航。
+6. 准备封面 `assets/<XX>_cn.png` / `<XX>_en.png`,并按第 3 节生成 `assets/web/` 下的 JPG。
+7. 在根目录 `app.js` 的 `books` 数组里登记这本书。**数组顺序就是档案编号**(档案 I、II…、镜头经过灵接舱的顺序、书卷总览顺序都由它决定),不要再用额外代码调整顺序;`tagline` 只写「档案 N ·」后面的部分。
+8. 正文来源:章节 HTML 由原稿 Markdown 生成,原稿与网页的对应关系、更新流程见 `docs/MANUSCRIPT_WORKFLOW.md`。
+9. 自检:`node --check assets/reader.js`;首页中英切换、封面切换、音乐播放/列表展开均正常;章节页仅底部导航;运行 README 中的链接检查。
 
 > 说明:四本占位小说(mystic-cat、crimson-cruise、spacetime-labyrinth、where-souls-return)目前仍是「创作中」单页,正式制作时按本规则套用即可;它们的中英封面图已在 `assets/` 备好。
 

@@ -4,17 +4,18 @@ import { RenderPass } from "three/addons/postprocessing/RenderPass.js";
 import { UnrealBloomPass } from "three/addons/postprocessing/UnrealBloomPass.js";
 import { OutputPass } from "three/addons/postprocessing/OutputPass.js";
 import { RoomEnvironment } from "three/addons/environments/RoomEnvironment.js";
+import { createSpiritConnectionPodKit } from "./src/scene/SpiritConnectionPod.js";
 
 const books = [
   {
     id: "dark-moon",
     glyph: { zh: "月", en: "DM" },
     title: { zh: "月球暗面", en: "Darkside of the Moon" },
-    kicker: { zh: "档案 I · 死在月球是知晓地球真相最快的方式", en: "Archive I · Dying on the Moon is the fastest way to know the truth of Earth" },
+    tagline: { zh: "死在月球是知晓地球真相最快的方式", en: "Dying on the Moon is the fastest way to know the truth of Earth" },
     status: { zh: "已出版", en: "Published" },
     theme: { zh: "意识迁出 · 死球理论", en: "Consciousness Exodus · Dead Moon Theory" },
     accent: "#2bb8ff",
-    cover: { zh: "assets/DM_cn.png", en: "assets/DM_en.png" },
+    cover: { zh: "assets/web/DM_cn.jpg", en: "assets/web/DM_en.jpg" },
     link: "novels/dark-moon/",
     description: {
       zh: "遍览古代文明，人类像猴子一样几千年没有成长。阿卡西的海洋像雨水一样浇灌在每一位智人的颅顶，没有高一级的文明介入，就算淹死，猴子依然是猴子。",
@@ -25,11 +26,11 @@ const books = [
     id: "whale-fall",
     glyph: { zh: "鲸", en: "WF" },
     title: { zh: "巨鲸陨落", en: "Whale Fall" },
-    kicker: { zh: "档案 II · 法厄同证词", en: "Archive II · Phaethon Testimony" },
+    tagline: { zh: "法厄同证词", en: "Phaeton Testimony" },
     status: { zh: "阅读稿已接入", en: "Reading Draft Added" },
     theme: { zh: "文明遗产 · 鲸歌回声", en: "Civilization Relic · Whale Echo" },
     accent: "#4da3ff",
-    cover: { zh: "assets/WF_cn.png", en: "assets/WF_en.png" },
+    cover: { zh: "assets/web/WF_cn.jpg", en: "assets/web/WF_en.jpg" },
     link: "novels/whale-fall/",
     description: {
       zh: "文明从不只由技术定义，每一代智能都会依照自己的审美，为繁荣赋予形状，也为永恒规定尺度。物质的极大丰饶催生了巨构文明，而太阳帝国，则是它最壮丽的象征。它巍峨，恢宏，仿佛足以抵抗时间，我们都曾相信它会永垂不朽。",
@@ -40,11 +41,11 @@ const books = [
     id: "mystic-cat",
     glyph: { zh: "猫", en: "MC" },
     title: { zh: "灵猫", en: "Mystic Cat" },
-    kicker: { zh: "档案 III · 安娜的区域", en: "Archive III · Anna's Region" },
+    tagline: { zh: "安娜的区域", en: "Anna's Region" },
     status: { zh: "伏笔开放", en: "Foreshadowed" },
     theme: { zh: "动物意识 · 时间井", en: "Animal Consciousness · Time Well" },
     accent: "#e2a72b",
-    cover: { zh: "assets/MC_cn.png", en: "assets/MC_en.png" },
+    cover: { zh: "assets/web/MC_cn.jpg", en: "assets/web/MC_en.jpg" },
     link: "novels/mystic-cat/",
     description: {
       zh: "纵观人类千年，科技树如何生长，远不如你们本身有趣。宇宙的规律始终在那里，技术只是迟早会被发现的答案；而人的故事没有答案，也从不重复。你们以无数种方式活着，又以无数种方式赋予一生意义。这是我们圣灵一族从未拥有过的东西……",
@@ -55,11 +56,11 @@ const books = [
     id: "crimson-cruise",
     glyph: { zh: "邮", en: "CC" },
     title: { zh: "血色邮轮", en: "The Crimson Cruise" },
-    kicker: { zh: "档案 IV · 海上亡灵", en: "Archive IV · The Sea of the Dead" },
+    tagline: { zh: "海上亡灵", en: "The Sea of the Dead" },
     status: { zh: "预告", en: "Preview" },
     theme: { zh: "邮轮 · 轮回 · 失踪航线", en: "Cruise · Rebirth · Missing Route" },
     accent: "#ff4f9a",
-    cover: { zh: "assets/CC_cn.png", en: "assets/CC_en.png" },
+    cover: { zh: "assets/web/CC_cn.jpg", en: "assets/web/CC_en.jpg" },
     link: "novels/crimson-cruise/",
     description: {
       zh: "一艘驶向未知海域的邮轮，把生者、死者和未完成的记忆带进同一条航线。",
@@ -67,40 +68,48 @@ const books = [
     },
   },
   {
-    id: "home-soul",
-    glyph: { zh: "魂", en: "HS" },
-    title: { zh: "灵魂归处", en: "Where Souls Return" },
-    kicker: { zh: "档案 V · 归处", en: "Archive V · Return Point" },
-    status: { zh: "预留", en: "Reserved" },
-    theme: { zh: "归乡 · 意识余辉", en: "Return · Afterglow" },
-    accent: "#42d6ff",
-    cover: { zh: "assets/WSR_cn.png", en: "assets/WSR_en.png" },
-    link: "novels/where-souls-return/",
-    description: {
-      zh: "当身体和数字人格都不能回答“我是谁”，灵魂也许会寻找第三个归处。",
-      en: "When neither body nor digital persona can answer who you are, the soul may search for a third place to return.",
-    },
-  },
-  {
     id: "spacetime-labyrinth",
     glyph: { zh: "迷", en: "SL" },
     title: { zh: "时空迷宫", en: "Spacetime Labyrinth" },
-    kicker: { zh: "档案 VI · 时空回环", en: "Archive VI · Spacetime Loop" },
+    tagline: { zh: "时空回环", en: "Spacetime Loop" },
     status: { zh: "预留", en: "Reserved" },
     theme: { zh: "时空 · 迷宫 · 认知回环", en: "Spacetime · Labyrinth · Cognitive Loop" },
     accent: "#7ecbff",
-    cover: { zh: "assets/SL_cn.png", en: "assets/SL_en.png" },
+    cover: { zh: "assets/web/SL_cn.jpg", en: "assets/web/SL_en.jpg" },
     link: "novels/spacetime-labyrinth/",
     description: {
       zh: "一座由时间切片、空间回廊和意识错觉共同构成的迷宫。每一次接近出口，都会把人带回另一个入口。",
       en: "A labyrinth built from time slices, spatial corridors, and perceptual loops. Every exit leads back to another entrance.",
     },
   },
+  {
+    id: "home-soul",
+    glyph: { zh: "魂", en: "HS" },
+    title: { zh: "灵魂归处", en: "Where Souls Return" },
+    tagline: { zh: "归处", en: "Return Point" },
+    status: { zh: "预留", en: "Reserved" },
+    theme: { zh: "归乡 · 意识余辉", en: "Return · Afterglow" },
+    accent: "#42d6ff",
+    cover: { zh: "assets/web/WSR_cn.jpg", en: "assets/web/WSR_en.jpg" },
+    link: "novels/where-souls-return/",
+    description: {
+      zh: "当身体和数字人格都不能回答“我是谁”，灵魂也许会寻找第三个归处。",
+      en: "When neither body nor digital persona can answer who you are, the soul may search for a third place to return.",
+    },
+  },
 ];
 
-const soulVolumeIndex = books.findIndex((book) => book.id === "home-soul");
-const soulVolume = soulVolumeIndex >= 0 ? books.splice(soulVolumeIndex, 1)[0] : null;
-if (soulVolume) books.push(soulVolume);
+// Array order is the single source of truth for archive numbering: cabin
+// position, panel kicker, archive card and storyline labels all derive from it.
+// Where Souls Return is intentionally the final volume (series bible: 灵魂归处应后置).
+const ROMAN = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"];
+books.forEach((book, i) => {
+  book.archive = i + 1;
+  book.kicker = {
+    zh: `档案 ${ROMAN[i]} · ${book.tagline.zh}`,
+    en: `Archive ${ROMAN[i]} · ${book.tagline.en}`,
+  };
+});
 
 const CABIN_COUNT = 6;
 const cabinBooks = books.slice(0, CABIN_COUNT);
@@ -129,7 +138,7 @@ const uiText = {
     archiveEyebrow: "档案索引",
     archiveTitle: "灵接幻想书卷序列",
     archiveLead:
-      "已挂入现有封面资源；英文封面暂缺的书卷会先使用中文封面，之后你替换文件即可继续扩展。",
+      "六卷书按档案顺序排列。全文已上线的书卷可直接进入阅读，其余书卷仍在创作中。",
     views: ["书卷总览", "故事线", "关系图谱"],
     graphTip: "拖拽视图 · 悬停高亮 · 点击节点查看说明",
     storyHint: "故事线正在生成……点击任意节点查看事件。",
@@ -155,7 +164,7 @@ const uiText = {
     archiveEyebrow: "ARCHIVE INDEX",
     archiveTitle: "Spirit Connect Fantasy Book Sequence",
     archiveLead:
-      "Current cover assets are wired in. When an English cover is missing, the site falls back to the Chinese cover until you replace it.",
+      "Six volumes in archive order. Volumes with full text online open straight into the reader; the rest are still being written.",
     views: ["Archive", "Story Lines", "Relation Graph"],
     graphTip: "Drag view · Hover to highlight · Click a node",
     storyHint: "The line is drawing... click any node to read the event.",
@@ -170,10 +179,11 @@ const uiText = {
 const storyBooks = [
   {
     id: "moon",
+    bookId: "dark-moon",
     glyph: "月",
     accent: "#00e5ff",
     title: { zh: "月球暗面", en: "Darkside of the Moon" },
-    subtitle: { zh: "档案 I · 挣脱通往真相的第一道枷锁", en: "Archive I · Break Free from the First Shackle Toward Truth" },
+    tagline: { zh: "挣脱通往真相的第一道枷锁", en: "Break Free from the First Shackle Toward Truth" },
     status: { zh: "已出版", en: "Published" },
     nodes: [
       { zh: ["第二次数字矫正", "2118 年，十八岁的吉姆·维尔走进灵接舱，进行人生第二次数字矫正。这一次，有什么东西没有按程序进行。"], en: ["The Second Correction", "In 2118, Jim Vale enters the connection cabin for his second digital correction. This time, something does not follow the program."] },
@@ -204,10 +214,11 @@ const storyBooks = [
   },
   {
     id: "whale",
+    bookId: "whale-fall",
     glyph: "鲸",
     accent: "#7c4dff",
     title: { zh: "巨鲸陨落", en: "Whale Fall" },
-    subtitle: { zh: "档案 II · 法厄同证词", en: "Archive II · Phaethon Testimony" },
+    tagline: { zh: "法厄同证词", en: "Phaeton Testimony" },
     status: { zh: "阅读稿已接入", en: "Reading Draft Added" },
     nodes: [
       { zh: ["尸山之上", "查理在一具陌生的身体里醒来，站在尸体堆成的山上。"], en: ["Mountain of the Dead", "Charlie wakes in a stranger's body, standing on a mountain of corpses."] },
@@ -217,7 +228,7 @@ const storyBooks = [
       { zh: ["战争的真相", "这不是资源战争。地球是正在成形的生命孵化场。"], en: ["Truth of the War", "This is not a resource war. Earth is a forming incubator of life."] },
       { zh: ["巨鲸不是武器", "巨鲸族是星海的记忆载体，活的文明档案库。坠落从来不是攻击。"], en: ["Not a Weapon", "The whale-kind are memory vessels of the star sea. The fall was never an attack."] },
       { zh: ["种子", "巨鲸族把一部分记忆、频率与生物蓝图封进年轻海洋的生命演化链。"], en: ["The Seed", "The whale-kind seal memory, frequency, and biological blueprint into the young ocean."] },
-      { zh: ["小行星带的诞生", "法厄同下沉碎裂。胜利者在残骸上争吵，只同意一件事：没有一族配拥有地球。"], en: ["The Belt Is Born", "Phaethon shatters. The victors agree on only one thing: no people deserves Earth."] },
+      { zh: ["小行星带的诞生", "法厄同下沉碎裂。胜利者在残骸上争吵，只同意一件事：没有一族配拥有地球。"], en: ["The Belt Is Born", "Phaeton shatters. The victors agree on only one thing: no people deserves Earth."] },
       { zh: ["蓝鲸在地球歌唱", "亿万年后，那颗种子长成了地球上最大的动物。查理听见了歌声。"], en: ["The Blue Whale Sings", "Ages later, the seed has become Earth's largest animal. Charlie hears the song."] },
       { zh: ["宿主最后的选择", "洛安的故事走到尽头。怕死的人，也可能是最后一个站着的见证者。"], en: ["The Host's Choice", "Loan's story reaches its end. The one afraid to die may be the last witness standing."] },
       { zh: ["回声归档", "记录闭合。查理把这场战争看到了最后。"], en: ["Echo Archived", "The record closes. Charlie watches the war through to its end."] },
@@ -240,6 +251,14 @@ const storyBooks = [
   },
 ];
 
+storyBooks.forEach((story) => {
+  const index = books.findIndex((book) => book.id === story.bookId);
+  story.subtitle = {
+    zh: `档案 ${ROMAN[index]} · ${story.tagline.zh}`,
+    en: `Archive ${ROMAN[index]} · ${story.tagline.en}`,
+  };
+});
+
 const graphTypes = {
   book: { zh: "书卷", en: "Books", color: "#5ef9ff" },
   character: { zh: "人物", en: "Characters", color: "#ffb454" },
@@ -249,11 +268,11 @@ const graphTypes = {
 
 const graphNodes = [
   ["b1", "book", "月球暗面", "Darkside of the Moon", "档案 I · 挣脱通往真相的第一道枷锁。系列入口。", "Archive I · Break Free from the First Shackle Toward Truth. The entrance to the series."],
-  ["b2", "book", "巨鲸陨落", "Whale Fall", "档案 II · 法厄同证词。查理在远古战争中的见证。", "Archive II · Phaethon Testimony. Charlie's witness of the ancient war."],
+  ["b2", "book", "巨鲸陨落", "Whale Fall", "档案 II · 法厄同证词。查理在远古战争中的见证。", "Archive II · Phaeton Testimony. Charlie's witness of the ancient war."],
   ["jim", "character", "吉姆·维尔", "Jim Vale", "挣脱第一道枷锁的人。", "The one who breaks free from the first shackle."],
   ["djim", "character", "数字吉姆", "Digital Jim", "吉姆的数字双生体，主体核问题的入口。", "Jim's digital twin, entrance to the Subject Core problem."],
   ["anna", "character", "安娜·刘易斯", "Anna Lewis", "困于非人类意识区域，《灵猫》的入口。", "Trapped in non-human consciousness; entrance to Mystic Cat."],
-  ["charlie", "character", "查理·黑尔", "Charlie Hale", "困于法厄同终战记录中的普通见证者。", "The ordinary witness trapped in the Phaethon record."],
+  ["charlie", "character", "查理·黑尔", "Charlie Hale", "困于法厄同终战记录中的普通见证者。", "The ordinary witness trapped in the Phaeton record."],
   ["elara", "character", "艾拉", "Elara", "小女孩形态只是投影，她的立场仍未解。", "The little girl is a projection; her allegiance remains open."],
   ["spire", "character", "伊莱亚斯·斯皮尔", "Elias Spire", "灵接幻想创始人，迁出执念的源头。", "Founder of Spirit Connect and origin of the migration obsession."],
   ["lune", "character", "卢恩博士", "Dr. Lune", "现实侧的伦理见证者。", "The ethical witness on the reality side."],
@@ -266,8 +285,8 @@ const graphNodes = [
   ["e2118", "event", "矫正事故", "Correction Incident", "吉姆返回，安娜与查理没有醒来。", "Jim returns; Anna and Charlie do not wake."],
   ["ecount", "event", "解构倒计时", "Deconstruction Countdown", "异常意识被月暗系统解构。", "Anomalous minds are deconstructed by the lunar system."],
   ["emoon", "event", "月面肉体死亡", "Death on the Moon", "吉姆进入真实泰拉撒记录。", "Jim enters the true Terasa Records."],
-  ["ewar", "event", "法厄同终战", "Phaethon War", "围绕地球未来的太阳系终战。", "The final solar-system war over Earth's future."],
-  ["efall", "event", "巨鲸坠落", "The Whale Falls", "星舰般的巨鲸撕裂法厄同。", "A starship-like whale tears Phaethon apart."],
+  ["ewar", "event", "法厄同终战", "Phaeton War", "围绕地球未来的太阳系终战。", "The final solar-system war over Earth's future."],
+  ["efall", "event", "巨鲸坠落", "The Whale Falls", "星舰般的巨鲸撕裂法厄同。", "A starship-like whale tears Phaeton apart."],
   ["cabin", "concept", "灵接舱", "Connection Cabin", "低阶意识接口。", "A low-order consciousness interface."],
   ["twin", "concept", "双生模式", "Twin Mode", "肉体与数字生命并行发展。", "Physical and digital lives develop in parallel."],
   ["core", "concept", "主体核", "Subject Core", "只能迁移，永不可复制。", "Can only migrate; can never be copied."],
@@ -291,11 +310,7 @@ const themes = {
     fogNear: 420,
     fogFar: 1200,
     floor: "#c9c0b0",
-    shell: "#b9c0c6",
     pearl: "#8e9aa5",
-    glass: "#55b5d7",
-    darkGlass: "#263b4d",
-    rail: "#66717a",
     hemiSky: "#f8f1e5",
     hemiGround: "#5d6570",
     hemiIntensity: 1.14,
@@ -309,11 +324,7 @@ const themes = {
     fogNear: 80,
     fogFar: 360,
     floor: "#172234",
-    shell: "#253348",
     pearl: "#33455f",
-    glass: "#42c9ff",
-    darkGlass: "#08111e",
-    rail: "#6d83a1",
     hemiSky: "#29466f",
     hemiGround: "#03060b",
     hemiIntensity: 0.72,
@@ -334,6 +345,16 @@ let smoothPointerX = 0;
 let smoothPointerY = 0;
 let railDragging = false;
 let spiritCore = null;
+let rafId = 0;
+let loopRunning = false;
+let ambientTime = 0;
+let lastFrameTime = 0;
+let sceneDirty = true;
+let frameTimeAvg = 16.7;
+let frameSamples = 0;
+let lastQualityCheck = 0;
+const domCache = new Map();
+const VIEW_HASHES = { archive: "#archive-grid", storyline: "#storylines", graph: "#relations" };
 
 const SECTIONS = 12;
 const textureLoader = new THREE.TextureLoader();
@@ -354,6 +375,7 @@ const statusEl = document.getElementById("book-status");
 const themeEl = document.getElementById("book-theme");
 const link = document.getElementById("book-link");
 const archiveList = document.getElementById("archive-list");
+const graphView = document.getElementById("final-graph");
 
 const els = {
   navOverview: document.querySelector("[data-i18n='navOverview']"),
@@ -368,8 +390,8 @@ const els = {
   graphTip: document.querySelector("[data-i18n='graphTip']"),
   footerCopy: document.querySelector("[data-i18n='footerCopy']"),
   bookLink: document.querySelector("[data-i18n='enter']"),
-  langButtons: [...document.querySelectorAll("[data-lang]")],
-  modeButtons: [...document.querySelectorAll("[data-mode]")],
+  langButtons: [...document.querySelectorAll("button[data-lang]")],
+  modeButtons: [...document.querySelectorAll("button[data-mode]")],
   finalViewButtons: [...document.querySelectorAll("[data-final-view]")],
 };
 
@@ -409,42 +431,52 @@ scrollStage.style.overscrollBehavior = "none";
 scrollStage.style.zIndex = "2";
 scrollStage.querySelector(".scroll-space").style.height = `${SECTIONS * 100}vh`;
 
-const renderer = new THREE.WebGLRenderer({
-  canvas,
-  antialias: true,
-  alpha: false,
-  powerPreference: "high-performance",
+const quality = detectQuality();
+const reducedMotionQuery = window.matchMedia?.("(prefers-reduced-motion: reduce)");
+let reduceMotion = !!reducedMotionQuery?.matches;
+reducedMotionQuery?.addEventListener?.("change", (ev) => {
+  reduceMotion = ev.matches;
 });
-renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-renderer.setSize(window.innerWidth, window.innerHeight);
-renderer.toneMapping = THREE.ACESFilmicToneMapping;
-renderer.toneMappingExposure = 1.08;
-renderer.shadowMap.enabled = true;
-renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+
+// Highest pixel ratio this device tier may use; the adaptive loop below can
+// lower the live value when frames get slow and raise it again when they recover.
+const maxPixelRatio = Math.min(window.devicePixelRatio || 1, quality === "high" ? 2 : quality === "medium" ? 1.5 : 1.25);
+const minPixelRatio = Math.min(maxPixelRatio, 0.75);
+let pixelRatio = maxPixelRatio;
+
+const renderer = createRenderer();
+if (!renderer) document.body.classList.add("no-webgl");
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(58, window.innerWidth / window.innerHeight, 0.1, 900);
-const pmrem = new THREE.PMREMGenerator(renderer);
-scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.035).texture;
+if (renderer) {
+  const pmrem = new THREE.PMREMGenerator(renderer);
+  const roomEnvironment = new RoomEnvironment();
+  scene.environment = pmrem.fromScene(roomEnvironment, 0.035).texture;
+  roomEnvironment.dispose?.();
+  pmrem.dispose();
+}
 
-const composer = new EffectComposer(renderer);
-composer.addPass(new RenderPass(scene, camera));
+const composer = renderer ? new EffectComposer(renderer) : null;
 const bloom = new UnrealBloomPass(
   new THREE.Vector2(window.innerWidth, window.innerHeight),
   0.52,
   0.58,
   0.66
 );
-composer.addPass(bloom);
-composer.addPass(new OutputPass());
+if (composer) {
+  composer.addPass(new RenderPass(scene, camera));
+  composer.addPass(bloom);
+  composer.addPass(new OutputPass());
+}
 
 const hemi = new THREE.HemisphereLight("#ffffff", "#8793a0", 1.35);
 scene.add(hemi);
 
 const keyLight = new THREE.DirectionalLight("#ffffff", 3.2);
 keyLight.position.set(64, 98, 84);
-keyLight.castShadow = true;
-keyLight.shadow.mapSize.set(2048, 2048);
+keyLight.castShadow = quality !== "low";
+keyLight.shadow.mapSize.setScalar(quality === "high" ? 2048 : 1024);
 keyLight.shadow.camera.left = -190;
 keyLight.shadow.camera.right = 190;
 keyLight.shadow.camera.top = 190;
@@ -464,14 +496,15 @@ scene.add(root);
 
 const mats = {
   floor: new THREE.MeshPhysicalMaterial({ color: "#d6e1ea", roughness: 0.42, metalness: 0.05, clearcoat: 0.28 }),
-  white: new THREE.MeshPhysicalMaterial({ color: "#f2f7fb", roughness: 0.3, metalness: 0.08, clearcoat: 0.5, clearcoatRoughness: 0.2 }),
   pearl: new THREE.MeshPhysicalMaterial({ color: "#c3d0dc", roughness: 0.22, metalness: 0.2, clearcoat: 0.8 }),
-  glass: new THREE.MeshPhysicalMaterial({ color: "#87d7ff", roughness: 0.05, metalness: 0, transmission: 0.35, transparent: true, opacity: 0.5, clearcoat: 1, side: THREE.DoubleSide }),
-  darkGlass: new THREE.MeshPhysicalMaterial({ color: "#18314a", roughness: 0.18, metalness: 0.3, transparent: true, opacity: 0.58, clearcoat: 1 }),
-  rail: new THREE.MeshStandardMaterial({ color: "#76899b", roughness: 0.34, metalness: 0.52 }),
   blueGlow: new THREE.MeshStandardMaterial({ color: "#07131d", emissive: "#2bb8ff", emissiveIntensity: 1.55, roughness: 0.4 }),
   goldGlow: new THREE.MeshStandardMaterial({ color: "#1a1206", emissive: "#d79b3a", emissiveIntensity: 0.9, roughness: 0.42 }),
 };
+
+const podKit = createSpiritConnectionPodKit({
+  quality,
+  anisotropy: renderer ? Math.min(8, renderer.capabilities.getMaxAnisotropy()) : 1,
+});
 
 const camPositions = buildCameraPositions();
 const camTargets = buildCameraTargets();
@@ -529,14 +562,75 @@ const sparkleField = buildSparkles();
 const bookSprites = buildBookSprites();
 wireControls();
 const initialLanguage = (() => {
-  const requested = new URLSearchParams(window.location.search).get("lang") || localStorage.getItem("spiritConnectLang");
+  const requested = new URLSearchParams(window.location.search).get("lang") || storageGet("spiritConnectLang");
   return requested === "en" || requested === "zh" ? requested : "zh";
 })();
 applyLanguage(initialLanguage);
-applyTheme("night");
+applyTheme(storageGet("spiritConnectTheme") === "day" ? "day" : "night");
 onResize();
 onScroll();
-animate();
+applyLocationView();
+startLoop();
+
+function storageGet(key) {
+  try {
+    return window.localStorage.getItem(key);
+  } catch {
+    return null;
+  }
+}
+
+function storageSet(key, value) {
+  try {
+    window.localStorage.setItem(key, value);
+  } catch {
+    // Storage can be unavailable (private mode, blocked site data); the choice just isn't remembered.
+  }
+}
+
+function detectQuality() {
+  const requested = new URLSearchParams(window.location.search).get("quality");
+  if (requested === "low" || requested === "medium" || requested === "high") return requested;
+  const coarse = window.matchMedia?.("(pointer: coarse)").matches;
+  const smallScreen = Math.min(window.screen?.width || 1024, window.screen?.height || 768) < 600;
+  const cores = navigator.hardwareConcurrency || 4;
+  const memory = navigator.deviceMemory || 4;
+  if ((coarse && smallScreen) || cores <= 2 || memory <= 2) return "low";
+  if (coarse || cores <= 4 || memory <= 4) return "medium";
+  return "high";
+}
+
+function createRenderer() {
+  // ?nowebgl simulates a device without WebGL so the 2D fallback can be tested.
+  if (new URLSearchParams(window.location.search).has("nowebgl")) return null;
+  try {
+    const r = new THREE.WebGLRenderer({
+      canvas,
+      antialias: quality !== "low",
+      alpha: false,
+      powerPreference: quality === "low" ? "default" : "high-performance",
+    });
+    r.setPixelRatio(pixelRatio);
+    r.setSize(window.innerWidth, window.innerHeight);
+    r.toneMapping = THREE.ACESFilmicToneMapping;
+    r.toneMappingExposure = 1.08;
+    r.shadowMap.enabled = quality !== "low";
+    r.shadowMap.type = THREE.PCFSoftShadowMap;
+    canvas.addEventListener("webglcontextlost", (ev) => {
+      ev.preventDefault();
+      stopLoop();
+      document.body.classList.add("no-webgl");
+    });
+    canvas.addEventListener("webglcontextrestored", () => {
+      document.body.classList.remove("no-webgl");
+      startLoop();
+    });
+    return r;
+  } catch (error) {
+    console.warn("WebGL is unavailable; showing the archive without the 3D scene.", error);
+    return null;
+  }
+}
 
 function getCover(book) {
   return book.cover[language] || book.cover.zh || book.cover.en;
@@ -544,12 +638,38 @@ function getCover(book) {
 
 function getTexture(url) {
   if (!textureCache.has(url)) {
-    const texture = textureLoader.load(url);
+    const texture = textureLoader.load(url, () => {
+      // Covers are portrait images shown at a few hundred pixels at most;
+      // cap the uploaded size so six covers stay small in GPU memory.
+      const image = texture.image;
+      const maxSide = quality === "low" ? 512 : 1024;
+      if (image && Math.max(image.width, image.height) > maxSide) {
+        const scale = maxSide / Math.max(image.width, image.height);
+        const c = document.createElement("canvas");
+        c.width = Math.round(image.width * scale);
+        c.height = Math.round(image.height * scale);
+        c.getContext("2d").drawImage(image, 0, 0, c.width, c.height);
+        texture.image = c;
+        texture.needsUpdate = true;
+      }
+    });
     texture.colorSpace = THREE.SRGBColorSpace;
-    texture.anisotropy = 8;
+    texture.anisotropy = renderer ? Math.min(8, renderer.capabilities.getMaxAnisotropy()) : 1;
     textureCache.set(url, texture);
   }
   return textureCache.get(url);
+}
+
+// Free covers of the language that is no longer displayed; they reload from
+// the HTTP cache if the reader switches back.
+function releaseUnusedCovers() {
+  const inUse = new Set(cabinBooks.map((book) => getCover(book)));
+  inUse.add("assets/spirit-connect-logo.png");
+  textureCache.forEach((texture, url) => {
+    if (inUse.has(url)) return;
+    texture.dispose();
+    textureCache.delete(url);
+  });
 }
 
 function buildEnvironment() {
@@ -653,7 +773,7 @@ function buildSpiritLogoCore() {
     floorWaves.push(ring);
   }
 
-  const particleCount = 280;
+  const particleCount = quality === "low" ? 140 : 280;
   const pos = new Float32Array(particleCount * 3);
   const colors = new Float32Array(particleCount * 3);
   const phases = new Float32Array(particleCount);
@@ -694,56 +814,26 @@ function buildSpiritLogoCore() {
 
 function buildCapsules() {
   const group = new THREE.Group();
+  group.name = "spirit-connection-pods";
   const items = [];
-  const podGeo = new THREE.CapsuleGeometry(8, 26, 12, 26);
-  const baseGeo = new THREE.BoxGeometry(19, 4, 46);
-  const canopyGeo = new THREE.CapsuleGeometry(6.7, 20, 10, 22);
-
   for (let i = 0; i < CABIN_COUNT; i++) {
     const angle = cabinAngle(i);
-    const pod = new THREE.Group();
     const book = cabinBooks[i] || null;
-    pod.position.set(Math.cos(angle) * 134, 3.8, Math.sin(angle) * 134);
+    const handle = podKit.createPod({ accent: book?.accent, enabled: !!book, seed: i });
+    const pod = handle.group;
+    // Pod local +z (foot end) points radially outward toward the camera path;
+    // the head end faces the central core.
+    pod.position.set(Math.cos(angle) * 134, 0, Math.sin(angle) * 134);
     pod.rotation.y = -angle + Math.PI / 2;
-
-    const base = new THREE.Mesh(baseGeo, mats.pearl);
-    base.position.y = -1.9;
-    base.castShadow = true;
-    base.receiveShadow = true;
-    pod.add(base);
-
-    const body = new THREE.Mesh(podGeo, mats.white);
-    body.rotation.x = Math.PI / 2;
-    body.scale.set(1.08, 1.0, 0.68);
-    body.position.y = 2;
-    body.castShadow = true;
-    body.receiveShadow = true;
-    pod.add(body);
-
-    const canopy = new THREE.Mesh(canopyGeo, book ? mats.glass : mats.darkGlass);
-    canopy.rotation.x = Math.PI / 2;
-    canopy.scale.set(0.78, 0.82, 0.4);
-    canopy.position.set(0, 6.6, -1.6);
-    pod.add(canopy);
-
-    const rimMat = book
-      ? new THREE.MeshStandardMaterial({ color: "#07131d", emissive: book.accent, emissiveIntensity: 1.2, roughness: 0.4 })
-      : mats.rail;
-    const rim = new THREE.Mesh(new THREE.TorusGeometry(7.05, 0.32, 10, 84), rimMat);
-    rim.rotation.x = Math.PI / 2;
-    rim.position.set(0, 6.83, -1.6);
-    rim.scale.set(1, 1.58, 1);
-    pod.add(rim);
-
     group.add(pod);
-    items.push({ pod, book, rimMat });
+    items.push({ pod, book, handle });
   }
   root.add(group);
   return items;
 }
 
 function buildParticles() {
-  const count = 1000;
+  const count = quality === "low" ? 450 : quality === "medium" ? 750 : 1000;
   const pos = new Float32Array(count * 3);
   const colors = new Float32Array(count * 3);
   const blue = new THREE.Color("#67d8ff");
@@ -811,7 +901,8 @@ function makeSparkTexture(kind) {
 function buildSparkles() {
   const group = new THREE.Group();
   const textures = [makeSparkTexture("dot"), makeSparkTexture("star"), makeSparkTexture("square")];
-  for (let i = 0; i < 90; i++) {
+  const sparkleCount = quality === "low" ? 45 : 90;
+  for (let i = 0; i < sparkleCount; i++) {
     const mat = new THREE.SpriteMaterial({
       map: textures[i % textures.length],
       transparent: true,
@@ -878,8 +969,9 @@ function wireControls() {
   els.modeButtons.forEach((btn) => btn.addEventListener("click", () => applyTheme(btn.dataset.mode)));
   wireStoryPan();
   els.finalViewButtons.forEach((btn) => {
-    btn.addEventListener("click", () => showFinalView(btn.dataset.finalView));
+    btn.addEventListener("click", () => showFinalView(btn.dataset.finalView, { updateHash: true }));
   });
+  window.addEventListener("hashchange", applyLocationView);
   els.navOverview.addEventListener("click", (ev) => {
     ev.preventDefault();
     jumpToFinal("archive");
@@ -892,7 +984,7 @@ function wireControls() {
 
 function applyLanguage(next) {
   language = next;
-  localStorage.setItem("spiritConnectLang", language);
+  storageSet("spiritConnectLang", language);
   const copy = uiText[language];
   document.title = copy.title;
   document.documentElement.lang = copy.htmlLang;
@@ -920,10 +1012,12 @@ function applyLanguage(next) {
     sprite.material.map = getTexture(getCover(cabinBooks[i]));
     sprite.material.needsUpdate = true;
   });
+  releaseUnusedCovers();
   buildArchive();
   buildStoryline();
   setupGraph();
-  drawRelationGraph();
+  if (selectedGraphNode) selectGraphNode(selectedGraphNode);
+  else drawRelationGraph();
   setActiveBook(activeBook < 0 ? 0 : activeBook, true);
 }
 
@@ -938,18 +1032,17 @@ function applyTheme(next) {
   scene.background = new THREE.Color(t.bg);
   scene.fog = new THREE.Fog(t.fog, t.fogNear, t.fogFar);
   scene.environmentIntensity = t.env;
-  renderer.toneMappingExposure = mode === "day" ? 1.0 : 0.92;
+  if (renderer) renderer.toneMappingExposure = mode === "day" ? 1.0 : 0.92;
   hemi.color.set(t.hemiSky);
   hemi.groundColor.set(t.hemiGround);
   hemi.intensity = t.hemiIntensity;
   keyLight.intensity = t.keyIntensity;
   bloom.strength = t.bloom;
   mats.floor.color.set(t.floor);
-  mats.white.color.set(t.shell);
   mats.pearl.color.set(t.pearl);
-  mats.glass.color.set(t.glass);
-  mats.darkGlass.color.set(t.darkGlass);
-  mats.rail.color.set(t.rail);
+  podKit.setTheme(mode);
+  sceneDirty = true;
+  storageSet("spiritConnectTheme", mode);
   els.modeButtons.forEach((btn) => btn.classList.toggle("is-active", btn.dataset.mode === mode));
 }
 
@@ -958,7 +1051,7 @@ function buildArchive() {
   const items = [
     ...books.map((book) => ({
       title: book.title[language] || book.title.zh,
-      text: `${book.kicker[language] || book.kicker.zh}。${book.theme[language] || book.theme.zh}。${(book.description[language] || book.description.zh).slice(0, 86)}...`,
+      text: [book.kicker[language], book.theme[language], `${book.description[language].slice(0, language === "zh" ? 86 : 150)}…`].join(language === "zh" ? "。" : ". "),
       empty: false,
       cover: getCover(book),
       link: bookLinkFor(book.link),
@@ -984,7 +1077,25 @@ function buildArchive() {
     .join("");
 }
 
-function showFinalView(view) {
+function viewFromHash(hash) {
+  if (hash === "#storylines" || hash === "#storyline") return "storyline";
+  if (hash === "#relations" || hash === "#graph") return "graph";
+  if (hash === "#archive-grid" || hash === "#archive") return "archive";
+  return null;
+}
+
+function setViewHash(view) {
+  const hash = view ? VIEW_HASHES[view] : "";
+  if (window.location.hash === hash) return;
+  history.replaceState(null, "", `${window.location.pathname}${window.location.search}${hash}`);
+}
+
+function applyLocationView() {
+  const view = viewFromHash(window.location.hash);
+  if (view) jumpToFinal(view);
+}
+
+function showFinalView(view, { updateHash = false } = {}) {
   els.finalViewButtons.forEach((btn) => btn.classList.toggle("is-active", btn.dataset.finalView === view));
   document.querySelectorAll(".final-view").forEach((el) => el.classList.remove("is-active"));
   document.getElementById(`final-${view}`).classList.add("is-active");
@@ -993,12 +1104,15 @@ function showFinalView(view) {
     setupGraph();
     drawRelationGraph();
   }
+  if (updateHash) setViewHash(view);
 }
 
 function jumpToFinal(view) {
-  showFinalView(view);
+  showFinalView(view, { updateHash: true });
   scrollStage.scrollTop = scrollStage.scrollHeight - scrollStage.clientHeight;
-  onScroll();
+  progressTarget = 1;
+  progress = 1;
+  updateDom(progress);
 }
 
 function storyNodeText(node) {
@@ -1007,7 +1121,7 @@ function storyNodeText(node) {
 }
 
 function getStoryCover(book) {
-  const source = book.id === "moon" ? books[0] : book.id === "whale" ? books[1] : books.find((item) => item.title.zh === book.title.zh);
+  const source = books.find((item) => item.id === book.bookId);
   return source ? getCover(source) : "";
 }
 
@@ -1152,15 +1266,19 @@ function onStoryPointerDown(ev) {
     cameraX: storyCamera.x,
     cameraY: storyCamera.y,
   };
-  storyEls.canvas.setPointerCapture?.(ev.pointerId);
-  storyEls.canvas.classList.add("is-dragging");
 }
 
 function onStoryPointerMove(ev) {
   if (!storyDragging || !storyPointerStart) return;
   const dx = ev.clientX - storyPointerStart.x;
   const dy = ev.clientY - storyPointerStart.y;
-  if (Math.hypot(dx, dy) > 4) storyPointerMoved = true;
+  if (!storyPointerMoved && Math.hypot(dx, dy) > 4) {
+    // Capture only once a drag starts; capturing on pointerdown would retarget
+    // the click away from the story node that was pressed.
+    storyPointerMoved = true;
+    storyEls.canvas.setPointerCapture?.(ev.pointerId);
+    storyEls.canvas.classList.add("is-dragging");
+  }
   if (!storyPointerMoved) return;
   ev.preventDefault();
   ev.stopPropagation();
@@ -1173,7 +1291,7 @@ function onStoryPointerUp(ev) {
   if (!storyDragging) return;
   storyDragging = false;
   storyPointerStart = null;
-  storyEls.canvas.releasePointerCapture?.(ev.pointerId);
+  if (storyEls.canvas.hasPointerCapture?.(ev.pointerId)) storyEls.canvas.releasePointerCapture(ev.pointerId);
   storyEls.canvas.classList.remove("is-dragging");
   if (storyPointerMoved) {
     storySuppressClick = true;
@@ -1588,20 +1706,39 @@ function fadeWindow(p, start, end) {
   return 1;
 }
 
+// Writes a style/class only when its value changes, so the per-frame DOM
+// sync doesn't trigger needless style recalculation.
+function setStyle(el, key, prop, value) {
+  const cacheKey = `${key}:${prop}`;
+  if (domCache.get(cacheKey) === value) return;
+  domCache.set(cacheKey, value);
+  if (prop.startsWith("--")) el.style.setProperty(prop, value);
+  else el.style[prop] = value;
+}
+
+function setClass(el, key, name, on) {
+  const cacheKey = `${key}.${name}`;
+  if (domCache.get(cacheKey) === on) return;
+  domCache.set(cacheKey, on);
+  el.classList.toggle(name, on);
+}
+
 function updateDom(p) {
-  railDot.style.top = `${p * 100}%`;
+  setStyle(railDot, "rail", "top", `${(p * 100).toFixed(2)}%`);
   const introOpacity = p <= 0.105 ? 1 - p / 0.105 : 0;
-  intro.classList.toggle("is-visible", introOpacity > 0.02);
-  intro.style.opacity = introOpacity.toFixed(3);
+  setClass(intro, "intro", "is-visible", introOpacity > 0.02);
+  setStyle(intro, "intro", "opacity", introOpacity.toFixed(3));
   const panelOpacity = fadeWindow(p, 0.11, 0.78);
-  panel.classList.toggle("is-visible", panelOpacity > 0.02);
-  panel.style.opacity = panelOpacity.toFixed(3);
-  panel.style.transform = `translate(-50%, ${-42 + (1 - panelOpacity) * 4}%)`;
+  setClass(panel, "panel", "is-visible", panelOpacity > 0.02);
+  setStyle(panel, "panel", "opacity", panelOpacity.toFixed(3));
+  setStyle(panel, "panel", "--panel-shift", `${((1 - panelOpacity) * 4).toFixed(2)}%`);
   const overviewVisible = p >= 0.82;
-  overview.classList.toggle("is-visible", overviewVisible);
-  overview.style.opacity = overviewVisible ? "1" : "0";
-  overview.style.visibility = overviewVisible ? "visible" : "hidden";
-  overview.style.transform = overviewVisible ? "translateY(0)" : "translateY(18px)";
+  setClass(overview, "overview", "is-visible", overviewVisible);
+  setStyle(overview, "overview", "opacity", overviewVisible ? "1" : "0");
+  setStyle(overview, "overview", "visibility", overviewVisible ? "visible" : "hidden");
+  setStyle(overview, "overview", "transform", overviewVisible ? "translateY(0)" : "translateY(18px)");
+  if (!overviewVisible && domCache.get("overview.wasVisible")) setViewHash(null);
+  domCache.set("overview.wasVisible", overviewVisible);
 
   if (p >= 0.11 && p < 0.78) {
     const local = (p - 0.11) / 0.67;
@@ -1615,32 +1752,26 @@ function updateScene(dt, elapsed) {
   const t = clamp(progress / 0.86);
   posCurve.getPoint(t, camPos);
   targetCurve.getPoint(t, camTarget);
-  smoothPointerX += (pointerX - smoothPointerX) * Math.min(1, dt * 3);
-  smoothPointerY += (pointerY - smoothPointerY) * Math.min(1, dt * 3);
+  const motion = reduceMotion ? 0 : 1;
+  smoothPointerX += (pointerX * motion - smoothPointerX) * Math.min(1, dt * 3);
+  smoothPointerY += (pointerY * motion - smoothPointerY) * Math.min(1, dt * 3);
   camera.position.copy(camPos);
   camera.lookAt(camTarget);
   camera.translateX(smoothPointerX * 2.2);
   camera.translateY(-smoothPointerY * 1.1);
 
   root.rotation.y = Math.sin(elapsed * 0.08) * 0.012;
-  starField.rotation.y += dt * 0.012;
+  starField.rotation.y += dt * 0.012 * motion;
   starField.material.opacity = mode === "night" ? 0.64 : 0.2;
-  sparkleField.rotation.y -= dt * 0.008;
+  sparkleField.rotation.y -= dt * 0.008 * motion;
   sparkleField.children.forEach((sprite, i) => {
     const nightBoost = mode === "night" ? 1 : 0.28;
     sprite.material.opacity = sprite.userData.baseOpacity * nightBoost * (0.72 + 0.28 * Math.sin(elapsed * 1.4 + sprite.userData.phase + i));
   });
   coolLight.intensity = (mode === "day" ? 30 : 42) + Math.sin(elapsed * 1.2) * 4;
   warmLight.intensity = mode === "day" ? 12 : 18;
-  capsules.forEach((item, i) => {
-    const isActive = activeBook === i;
-    const pulse = (Math.sin(elapsed * 2.1 + i) + 1) / 2;
-    item.pod.position.y = 3.8 + Math.sin(elapsed * 0.7 + i) * 0.25;
-    item.pod.scale.setScalar(isActive ? 1.065 : 1);
-    if (item.rimMat.emissive) {
-      item.rimMat.emissiveIntensity = isActive ? 2.35 + pulse * 0.65 : 0.9 + pulse * 0.18;
-    }
-  });
+  const podActive = progress > 0.11 && progress < 0.78 ? activeBook : -1;
+  podKit.update({ dt, elapsed, activeIndex: podActive, motion });
   bookSprites.forEach((sprite, i) => {
     const active = activeBook === i && progress > 0.12 && progress < 0.78;
     sprite.visible = true;
@@ -1663,7 +1794,7 @@ function updateSpiritCore(dt, elapsed) {
 
   const nightBoost = mode === "night" ? 1 : 0.62;
   const pulse = 0.5 + 0.5 * Math.sin(elapsed * 1.65);
-  spiritCore.group.rotation.y += dt * 0.09;
+  spiritCore.group.rotation.y += dt * 0.09 * (reduceMotion ? 0 : 1);
 
   spiritCore.layers.forEach((sprite) => {
     const shimmer = 1 + Math.sin(elapsed * 1.4 + sprite.userData.phase) * 0.035;
@@ -1765,16 +1896,45 @@ function onRailPointerUp(ev) {
   rail.releasePointerCapture?.(ev.pointerId);
 }
 
-function onResize() {
+function applyRenderSize() {
   const w = window.innerWidth;
   const h = window.innerHeight;
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-  renderer.setSize(w, h);
-  composer.setSize(w, h);
-  bloom.setSize(w, h);
+  if (renderer) {
+    renderer.setPixelRatio(pixelRatio);
+    renderer.setSize(w, h);
+    composer.setPixelRatio(pixelRatio);
+    composer.setSize(w, h);
+  }
   camera.aspect = w / h;
+  // Portrait screens keep a usable horizontal field of view instead of
+  // cropping the ring down to a narrow slice.
+  const baseHalf = THREE.MathUtils.degToRad(29);
+  camera.fov = camera.aspect < 1 ? Math.min(85, THREE.MathUtils.radToDeg(2 * Math.atan(Math.tan(baseHalf) / camera.aspect))) : 58;
   camera.updateProjectionMatrix();
+  sceneDirty = true;
+}
+
+function onResize() {
+  applyRenderSize();
   drawRelationGraph();
+}
+
+// Adaptive resolution: if frames are consistently slow, step the pixel ratio
+// down; when they recover, step it back up toward the device tier's ceiling.
+function adaptResolution(frameMs, now) {
+  if (!renderer || frameMs > 250) return;
+  frameTimeAvg += (frameMs - frameTimeAvg) * 0.05;
+  frameSamples++;
+  if (frameSamples < 90 || now - lastQualityCheck < 2000) return;
+  lastQualityCheck = now;
+  let next = pixelRatio;
+  if (frameTimeAvg > 26 && pixelRatio > minPixelRatio) next = Math.max(minPixelRatio, pixelRatio - 0.25);
+  else if (frameTimeAvg < 17.5 && pixelRatio < maxPixelRatio) next = Math.min(maxPixelRatio, pixelRatio + 0.125);
+  if (next !== pixelRatio) {
+    pixelRatio = next;
+    frameSamples = 0;
+    applyRenderSize();
+  }
 }
 
 window.addEventListener("wheel", onWheel, { passive: false });
@@ -1790,17 +1950,78 @@ rail.addEventListener("pointermove", onRailPointerMove);
 rail.addEventListener("pointerup", onRailPointerUp);
 rail.addEventListener("pointercancel", onRailPointerUp);
 
-function animate() {
-  const dt = Math.min(clock.getDelta(), 0.05);
-  const elapsed = clock.elapsedTime;
+function startLoop() {
+  if (loopRunning || document.hidden) return;
+  loopRunning = true;
+  clock.getDelta();
+  lastFrameTime = performance.now();
+  rafId = requestAnimationFrame(animate);
+}
+
+function stopLoop() {
+  loopRunning = false;
+  cancelAnimationFrame(rafId);
+}
+
+document.addEventListener("visibilitychange", () => {
+  if (document.hidden) stopLoop();
+  else startLoop();
+});
+
+function animate(now = performance.now()) {
+  if (!loopRunning) return;
+  rafId = requestAnimationFrame(animate);
+  const frameMs = now - lastFrameTime;
+  lastFrameTime = now;
+  renderFrame(Math.min(clock.getDelta(), 0.05), frameMs, now);
+}
+
+function renderFrame(dt, frameMs, now) {
+  ambientTime += dt * (reduceMotion ? 0 : 1);
   onScroll();
-  progress += (progressTarget - progress) * Math.min(1, dt * 1.75);
+  const settled = Math.abs(progressTarget - progress) < 0.0004;
+  progress += (progressTarget - progress) * Math.min(1, dt * (reduceMotion ? 8 : 1.75));
   updateDom(progress);
-  updateScene(dt, elapsed);
-  if (document.getElementById("final-graph")?.classList.contains("is-active")) {
-    if (graphAlpha > 0.061 || graphDraggingNode) stepGraphPhysics();
+  if (graphView.classList.contains("is-active") && (graphAlpha > 0.061 || graphDraggingNode)) {
+    stepGraphPhysics();
     drawRelationGraph();
   }
+  if (!renderer) return;
+  // While the archive overview covers the screen and the camera has arrived,
+  // the 3D scene behind the frosted panel is effectively static: skip rendering.
+  if (overview.classList.contains("is-visible") && settled && !sceneDirty) return;
+  sceneDirty = false;
+  updateScene(dt, ambientTime);
   composer.render();
-  requestAnimationFrame(animate);
+  adaptResolution(frameMs, now);
+}
+
+// Test hook (only with ?debug=1): step frames without requestAnimationFrame,
+// e.g. spiritConnectDebug.jump(0.135) for a framed view of the first pod.
+if (new URLSearchParams(window.location.search).has("debug")) {
+  window.spiritConnectDebug = {
+    quality,
+    get pixelRatio() {
+      return pixelRatio;
+    },
+    step(frames = 1, dt = 1 / 60) {
+      for (let i = 0; i < frames; i++) renderFrame(dt, dt * 1000, performance.now());
+    },
+    jump(p) {
+      scrollStage.scrollTop = p * (scrollStage.scrollHeight - scrollStage.clientHeight);
+      onScroll();
+      progress = progressTarget;
+      sceneDirty = true;
+      for (let i = 0; i < 90; i++) renderFrame(1 / 60, 16.7, performance.now());
+    },
+    // Render one frame from an arbitrary camera (pod close-ups for visual checks).
+    look(position, target) {
+      if (!renderer) return;
+      updateScene(1 / 60, ambientTime);
+      camera.position.set(...position);
+      camera.lookAt(...target);
+      composer.render();
+    },
+    info: () => (renderer ? renderer.info : null),
+  };
 }
