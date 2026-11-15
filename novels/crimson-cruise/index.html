@@ -3,20 +3,30 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>血色邮轮 | 灵接幻想</title>
+    <title>血色游轮 | 灵接幻想</title>
     <style>
       body { margin: 0; min-height: 100vh; display: grid; place-items: center; background: #060b12; color: #edf7ff; font-family: "Microsoft YaHei", system-ui, sans-serif; }
       main { width: min(680px, calc(100vw - 40px)); text-align: center; }
       h1 { margin: 0 0 14px; font-size: clamp(38px, 7vw, 72px); }
-      p { margin: 0; color: #a9bed6; font-size: 18px; line-height: 1.8; }
+      p { margin: 0 0 14px; color: #a9bed6; font-size: 18px; line-height: 1.8; }
       a { display: inline-block; margin-top: 28px; color: #5edcff; text-decoration: none; font-weight: 800; }
     </style>
   </head>
   <body>
     <main>
-      <h1>血色邮轮</h1>
-      <p>本项目正在创作中，敬请期待。</p>
-      <a href="../../">返回灵接幻想档案</a>
+      <h1 data-en="The Blood-Red Cruise">血色游轮</h1>
+      <p data-en="Before the Black Tide, a cruise ship attack shakes Elias Spire's faith in humanity and reason. Spire and his old friends Arthur Wheeler and Jane Robbins encounter the Roswell consciousness interface, and each makes a different choice about the future of human consciousness.">黑潮爆发前，一场游轮袭击动摇了伊莱亚斯·斯皮尔对人性和理性的信念。斯皮尔和老友亚瑟·惠勒、简·罗宾斯接触到罗斯威尔遗留的意识接口，三人对人类意识的未来作出了不同的选择。</p>
+      <p data-en="In progress">正在创作中</p>
+      <a href="../../" data-en="Back to the Spirit Connect Fantasy Archives">返回灵接幻想档案</a>
     </main>
+    <script>
+      if (new URLSearchParams(window.location.search).get("lang") === "en") {
+        document.documentElement.lang = "en";
+        document.title = "The Blood-Red Cruise | Spirit Connect Fantasy";
+        document.querySelectorAll("[data-en]").forEach((element) => {
+          element.textContent = element.dataset.en;
+        });
+      }
+    </script>
   </body>
 </html>
