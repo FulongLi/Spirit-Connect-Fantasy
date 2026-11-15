@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>黑潮时代 | 灵接幻想</title>
+    <style>
+      :root { color-scheme: dark; }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background: #081017;
+        color: #edf7ff;
+        font-family: "Microsoft YaHei", system-ui, sans-serif;
+      }
+      header, main {
+        width: min(860px, calc(100% - 40px));
+        margin-inline: auto;
+      }
+      header {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        padding-block: 22px;
+      }
+      a { color: #9bd7ed; text-underline-offset: 0.22em; }
+      main {
+        display: grid;
+        grid-template-columns: minmax(0, 260px) minmax(0, 1fr);
+        gap: clamp(24px, 6vw, 64px);
+        align-items: center;
+        padding-block: clamp(24px, 9vh, 90px);
+      }
+      img {
+        display: block;
+        width: 100%;
+        height: auto;
+        border: 1px solid #344651;
+        border-radius: 6px;
+        box-shadow: 0 18px 46px rgb(0 0 0 / 40%);
+      }
+      h1 { margin: 6px 0 18px; font-size: clamp(36px, 6vw, 64px); line-height: 1.1; }
+      p { margin: 0; color: #b6c7d4; line-height: 1.75; }
+      .status { font-size: 14px; color: #9bd7ed; }
+      .author { margin-top: 16px; font-size: 14px; }
+      @media (max-width: 600px) {
+        main { grid-template-columns: 1fr; padding-top: 14px; }
+        img { width: min(100%, 215px); }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <a href="../../#archive-grid" data-en="Back to the archive">返回档案总览</a>
+      <a id="language-link" href="?lang=en" lang="en">English</a>
+    </header>
+    <main>
+      <img id="cover" src="../../assets/web/BT_cn.jpg" width="642" height="1024" alt="" />
+      <div>
+        <p class="status" data-en="Side story · In development">故事支线 · 筹备中</p>
+        <h1 data-en="Black Tide Era">黑潮时代</h1>
+        <p data-en="A side story about CP2's early life and what he lived through during the Black Tide.">以 CP2 先生为主角，讲述他的早年生活，以及他亲历黑潮时代的故事。</p>
+        <p class="author" data-en="By Fulong Li">李富龙 著</p>
+      </div>
+    </main>
+    <script>
+      if (new URLSearchParams(window.location.search).get("lang") === "en") {
+        document.documentElement.lang = "en";
+        document.title = "Black Tide Era | Spirit Connect Fantasy";
+        document.getElementById("cover").src = "../../assets/web/BT_en.jpg";
+        const languageLink = document.getElementById("language-link");
+        languageLink.href = "?lang=zh";
+        languageLink.lang = "zh-CN";
+        languageLink.textContent = "中文";
+        document.querySelectorAll("[data-en]").forEach((element) => {
+          element.textContent = element.dataset.en;
+        });
+      }
+    </script>
+  </body>
+</html>
