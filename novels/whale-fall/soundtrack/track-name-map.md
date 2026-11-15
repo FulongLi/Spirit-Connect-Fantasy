@@ -10,13 +10,13 @@ encoding issues with Chinese filenames on the web/server). The bilingual display
 
 | # | 文件名 (filename) | English title | 中文名称 | 章节 Chapter | 时长 Duration |
 |---|-------------------|---------------|----------|--------------|---------------|
-| 01 | `audio/shadows-above-the-ruins.mp3` | Shadows Above the Ruins | 废墟之上的阴影 | 01 尸山之上 / On the Mountain of Dead | 3:29 |
-| 02 | `audio/phaethon-in-memory.mp3` | Phaethon in Memory | 记忆中的法厄同 | 05 法厄同的天空裂开 / Phaethon's Sky Cracks | 2:55 |
-| 03 | `audio/requiem-grieving-sky.mp3` | Requiem for the Grieving Sky | 回溯恸天 | 08 五族残骸 / The Remains of Five Peoples | 2:54 |
-| 04 | `audio/phaethon-hymn.mp3` | Hymn of Phaethon | 法厄同圣歌 | 09 日辉族的律令 / The Decrees of the Sunbright | 2:46 |
-| 05 | `audio/phaethon-holy-war.mp3` | The Holy War of Phaethon | 法厄同圣战 | 16 第五行星 / The Fifth Planet | 3:40 |
-| 06 | `audio/last-sunbright-heir.mp3` | The Last Sunbright Heir | 最后的太阳裔 | 18 日辉族想要人类跪拜 / The Sunbright Wanted Kneeling Humans | 3:13 |
-| 07 | `audio/lost-ancient-empire.mp3` | The Lost Ancient Empire | 失落的远古帝国 | 30 法厄同开始下沉 / Phaeton Begins to Sink | 3:00 |
+| 01 | `audio/lost-ancient-empire.mp3` | Solar Empire | 太阳帝国 | 30 法厄同开始下沉 / Phaeton Begins to Sink | 3:00 |
+| 02 | `audio/shadows-above-the-ruins.mp3` | Shadows Above the Ruins | 废墟之上的阴影 | 01 尸山之上 / On the Mountain of Dead | 3:29 |
+| 03 | `audio/phaethon-in-memory.mp3` | Phaethon in Memory | 记忆中的法厄同 | 05 法厄同的天空裂开 / Phaethon's Sky Cracks | 2:55 |
+| 04 | `audio/requiem-grieving-sky.mp3` | Requiem for the Grieving Sky | 回溯恸天 | 08 五族残骸 / The Remains of Five Peoples | 2:54 |
+| 05 | `audio/phaethon-hymn.mp3` | Hymn of Phaethon | 法厄同圣歌 | 09 日辉族的律令 / The Decrees of the Sunbright | 2:46 |
+| 06 | `audio/phaethon-holy-war.mp3` | The Holy War of Phaethon | 法厄同圣战 | 16 第五行星 / The Fifth Planet | 3:40 |
+| 07 | `audio/last-sunbright-heir.mp3` | The Last Sunbright Heir | 最后的太阳裔 | 18 日辉族想要人类跪拜 / The Sunbright Wanted Kneeling Humans | 3:13 |
 | 08 | `audio/moment-of-rising.mp3` | The Moment of Rising | 起身之刻 | 47 醒来之前 / Before Waking | 2:45 |
 | 09 | `audio/ancient-lament-of-return.mp3` | Ancient Lament of Return | 古老的归来挽歌 | 48 蓝鲸在地球歌唱 / Blue Whales Sing on Earth | 1:52 |
 
@@ -26,7 +26,7 @@ encoding issues with Chinese filenames on the web/server). The bilingual display
 - `法厄同圣歌.mp3` → `phaethon-hymn.mp3`
 - `法厄同圣战.mp3` → `phaethon-holy-war.mp3`
 - `起身之刻.mp3` → `moment-of-rising.mp3`
-- `失落的远古帝国.mp3` → `lost-ancient-empire.mp3`
+- `失落的远古帝国.mp3` → `lost-ancient-empire.mp3`（显示名改为「太阳帝国」/ now displayed as "Solar Empire"）
 - `最后的太阳裔.mp3` → `last-sunbright-heir.mp3`
 
 ## 新增音乐的步骤 / How to add a new track

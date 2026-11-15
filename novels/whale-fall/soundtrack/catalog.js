@@ -1,7 +1,17 @@
 window.whaleFallSoundtrack = [
   {
-    id: "shadows-above-the-ruins",
+    id: "lost-ancient-empire",
     number: "01",
+    title: { zh: "太阳帝国", en: "Solar Empire" },
+    mood: { zh: "尘封文明 · 远古辉煌 · 帝国余晖", en: "Buried civilization · Ancient glory · An empire's last light" },
+    duration: "3:00",
+    chapter: "30",
+    src: "audio/lost-ancient-empire.mp3",
+    file: "audio/lost-ancient-empire.mp3"
+  },
+  {
+    id: "shadows-above-the-ruins",
+    number: "02",
     title: { zh: "废墟之上的阴影", en: "Shadows Above the Ruins" },
     mood: { zh: "战后死寂 · 废墟阴影 · 不是胜利的胜利", en: "After-war silence · Shadows over ruins · Victory that is not victory" },
     duration: "3:29",
@@ -11,7 +21,7 @@ window.whaleFallSoundtrack = [
   },
   {
     id: "phaethon-in-memory",
-    number: "02",
+    number: "03",
     title: { zh: "记忆中的法厄同", en: "Phaethon in Memory" },
     mood: { zh: "破碎的母星 · 天空裂开 · 第五行星的回忆", en: "Shattered homeworld · Sky splitting open · Memory of the fifth planet" },
     duration: "2:55",
@@ -21,7 +31,7 @@ window.whaleFallSoundtrack = [
   },
   {
     id: "requiem-grieving-sky",
-    number: "03",
+    number: "04",
     title: { zh: "回溯恸天", en: "Requiem for the Grieving Sky" },
     mood: { zh: "器乐安魂 · 回溯哀恸 · 为天空送别", en: "Instrumental requiem · Grief in retrospect · A farewell to the sky" },
     duration: "2:54",
@@ -31,7 +41,7 @@ window.whaleFallSoundtrack = [
   },
   {
     id: "phaethon-hymn",
-    number: "04",
+    number: "05",
     title: { zh: "法厄同圣歌", en: "Hymn of Phaethon" },
     mood: { zh: "圣咏回响 · 日辉之光 · 信仰与律令", en: "Choral echo · Sunbright radiance · Faith and decree" },
     duration: "2:46",
@@ -41,7 +51,7 @@ window.whaleFallSoundtrack = [
   },
   {
     id: "phaethon-holy-war",
-    number: "05",
+    number: "06",
     title: { zh: "法厄同圣战", en: "The Holy War of Phaethon" },
     mood: { zh: "五族交战 · 母星燃烧 · 圣战的代价", en: "Five peoples at war · Homeworld ablaze · The cost of the holy war" },
     duration: "3:40",
@@ -51,23 +61,13 @@ window.whaleFallSoundtrack = [
   },
   {
     id: "last-sunbright-heir",
-    number: "06",
+    number: "07",
     title: { zh: "最后的太阳裔", en: "The Last Sunbright Heir" },
     mood: { zh: "日辉余烬 · 最后的太阳裔 · 荣光将熄", en: "Embers of the Sunbright · The last heir · A glory about to fade" },
     duration: "3:13",
     chapter: "18",
     src: "audio/last-sunbright-heir.mp3",
     file: "audio/last-sunbright-heir.mp3"
-  },
-  {
-    id: "lost-ancient-empire",
-    number: "07",
-    title: { zh: "失落的远古帝国", en: "The Lost Ancient Empire" },
-    mood: { zh: "尘封文明 · 远古辉煌 · 失落的帝国", en: "Buried civilization · Ancient glory · A lost empire" },
-    duration: "3:00",
-    chapter: "30",
-    src: "audio/lost-ancient-empire.mp3",
-    file: "audio/lost-ancient-empire.mp3"
   },
   {
     id: "moment-of-rising",

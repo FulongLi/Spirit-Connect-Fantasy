@@ -1,23 +1,23 @@
 window.darkMoonSoundtrack = [
   {
-    id: "city-that-ages-with-my-steps",
-    number: "01",
-    title: { zh: "随我脚步老去的城市", en: "The City That Ages With My Steps" },
-    mood: { zh: "漫长行走 · 时间流逝 · 城市与人一同老去", en: "A long walk · Time passing · A city aging alongside its people" },
-    duration: "2:43",
-    chapter: "07",
-    src: "audio/city-that-ages-with-my-steps.mp3",
-    file: "audio/city-that-ages-with-my-steps.mp3"
-  },
-  {
     id: "moon-kingdom",
-    number: "02",
+    number: "01",
     title: { zh: "月之国", en: "Moon Kingdom" },
     mood: { zh: "月之国 · 暗面深处 · 沉睡的国度", en: "Kingdom of the Moon · Deep in the dark side · A sleeping realm" },
     duration: "3:00",
     chapter: "21",
     src: "audio/moon-kingdom.mp3",
     file: "audio/moon-kingdom.mp3"
+  },
+  {
+    id: "city-that-ages-with-my-steps",
+    number: "02",
+    title: { zh: "随我脚步老去的城市", en: "The City That Ages With My Steps" },
+    mood: { zh: "漫长行走 · 时间流逝 · 城市与人一同老去", en: "A long walk · Time passing · A city aging alongside its people" },
+    duration: "2:43",
+    chapter: "07",
+    src: "audio/city-that-ages-with-my-steps.mp3",
+    file: "audio/city-that-ages-with-my-steps.mp3"
   },
   {
     id: "terasha-record",
