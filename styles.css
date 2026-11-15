@@ -743,6 +743,14 @@ body[data-theme="night"] .archive-card {
   font-size: 19px;
 }
 
+.archive-card-status {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 700;
+}
+
 .archive-card p {
   margin: 0;
   color: var(--muted);

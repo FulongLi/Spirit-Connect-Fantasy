@@ -13,6 +13,7 @@ const books = [
     title: { zh: "月球暗面", en: "Darkside of the Moon" },
     tagline: { zh: "死在月球是知晓地球真相最快的方式", en: "Dying on the Moon is the fastest way to know the truth of Earth" },
     status: { zh: "已出版", en: "Published" },
+    archiveStatus: { zh: "已完结", en: "Completed" },
     theme: { zh: "意识迁出 · 死球理论", en: "Consciousness Exodus · Dead Moon Theory" },
     accent: "#2bb8ff",
     cover: { zh: "assets/web/DM_cn.jpg", en: "assets/web/DM_en.jpg" },
@@ -100,7 +101,7 @@ const books = [
 ];
 
 // Array order is the single source of truth for archive numbering: cabin
-// position, panel kicker, archive card and storyline labels all derive from it.
+// position, panel kicker, archive order and storyline labels all derive from it.
 // Where Souls Return is intentionally the final volume (series bible: 灵魂归处应后置).
 const ROMAN = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"];
 books.forEach((book, i) => {
@@ -1094,27 +1095,26 @@ function applyTheme(next) {
 function buildArchive() {
   const copy = uiText[language];
   const items = [
-    ...books.map((book) => ({
-      title: book.title[language] || book.title.zh,
-      text: [book.kicker[language], book.theme[language], `${book.description[language].slice(0, language === "zh" ? 86 : 150)}…`].join(language === "zh" ? "。" : ". "),
-      empty: false,
-      cover: getCover(book),
-      link: bookLinkFor(book.link),
-    })),
+    ...books.map(archiveBookItem),
     ...reserved.map((name, i) => ({
       title: `${copy.reservedPrefix} ${String(i + books.length + 1).padStart(2, "0")}`,
-      text: `${name[language] || name.zh} · ${copy.reservedText}`,
+      description: `${name[language] || name.zh} · ${copy.reservedText}`,
       empty: true,
     })),
   ];
 
   renderArchiveCards(archiveList, items);
-  renderArchiveCards(sideStoryList, sideStories.map((story) => ({
-    title: story.title[language],
-    text: `${story.status[language]} · ${story.description[language]}`,
-    cover: getCover(story),
-    link: bookLinkFor(story.link),
-  })));
+  renderArchiveCards(sideStoryList, sideStories.map(archiveBookItem));
+}
+
+function archiveBookItem(book) {
+  return {
+    title: book.title[language] || book.title.zh,
+    status: (book.archiveStatus || book.status)[language],
+    description: book.description[language],
+    cover: getCover(book),
+    link: bookLinkFor(book.link),
+  };
 }
 
 function renderArchiveCards(list, items) {
@@ -1124,7 +1124,8 @@ function renderArchiveCards(list, items) {
         <${item.link ? `a href="${item.link}"` : "article"} class="archive-card ${item.empty ? "is-empty" : ""}">
           ${item.cover ? `<span class="archive-thumb" style="background-image:url('${item.cover}')"></span>` : ""}
           <strong>${item.title}</strong>
-          <p>${item.text}</p>
+          ${item.status ? `<span class="archive-card-status">${item.status}</span>` : ""}
+          <p>${item.description}</p>
           ${item.link ? `<span class="archive-card-link">${uiText[language].enter}</span>` : ""}
         </${item.link ? "a" : "article"}>
       `
