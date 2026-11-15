@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>灵接幻想档案</title>
     <meta name="description" content="灵接幻想小说档案的沉浸式展示原型。" />
-    <link rel="stylesheet" href="styles.css?v=20261115-1" />
+    <link rel="stylesheet" href="styles.css?v=20261115-2" />
   </head>
   <body data-theme="night" data-lang="zh">
     <canvas id="scene" aria-label="灵接幻想环形档案舱场景"></canvas>
@@ -63,20 +63,21 @@
         <p class="eyebrow" data-i18n="archiveEyebrow">档案索引</p>
         <h2 id="archive-title" data-i18n="archiveTitle">灵接幻想书卷序列</h2>
         <p class="overview-lead" data-i18n="archiveLead">
-          主线书卷按档案顺序排列。已上线的作品可直接阅读。
+          已上线的作品可直接阅读，筹备中的作品可查看简介。
         </p>
-        <div class="archive-tabs" role="tablist" aria-label="Archive views">
-          <button type="button" class="is-active" data-final-view="archive">书卷总览</button>
-          <button type="button" data-final-view="storyline">故事线</button>
-          <button type="button" data-final-view="graph">关系图谱</button>
+        <div class="archive-tabs" role="group" aria-labelledby="archive-title">
+          <button type="button" class="is-active" data-final-view="archive" aria-controls="final-archive" aria-pressed="true">书卷总览</button>
+          <button type="button" data-final-view="extras" aria-controls="final-extras" aria-pressed="false">番外</button>
+          <button type="button" data-final-view="storyline" aria-controls="final-storyline" aria-pressed="false">故事线</button>
+          <button type="button" data-final-view="graph" aria-controls="final-graph" aria-pressed="false">关系图谱</button>
         </div>
         <div class="final-view is-active" id="final-archive">
           <div class="archive-grid" id="archive-list"></div>
-          <section class="side-stories" aria-labelledby="side-stories-title">
-            <h3 id="side-stories-title" data-i18n="sideStoriesTitle">故事支线</h3>
-            <div class="archive-grid side-story-list" id="side-story-list"></div>
-          </section>
         </div>
+        <section class="final-view side-stories" id="final-extras" aria-labelledby="side-stories-title">
+          <h3 id="side-stories-title" data-i18n="sideStoriesTitle">故事支线</h3>
+          <div class="archive-grid" id="side-story-list"></div>
+        </section>
         <div class="final-view" id="final-storyline">
           <div class="storyline-layout">
             <div class="story-books" id="story-book-list"></div>
@@ -109,6 +110,6 @@
         }
       }
     </script>
-    <script type="module" src="app.js?v=20261115-1"></script>
+    <script type="module" src="app.js?v=20261115-2"></script>
   </body>
 </html>

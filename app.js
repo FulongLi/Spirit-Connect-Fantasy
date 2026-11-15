@@ -151,10 +151,9 @@ const uiText = {
     archiveEyebrow: "档案索引",
     archiveTitle: "灵接幻想书卷序列",
     archiveLead:
-      "主线书卷按档案顺序排列。已上线的作品可直接阅读。",
+      "已上线的作品可直接阅读，筹备中的作品可查看简介。",
     sideStoriesTitle: "故事支线",
-    sideStoryPreview: "查看预告",
-    views: ["书卷总览", "故事线", "关系图谱"],
+    views: { archive: "书卷总览", extras: "番外", storyline: "故事线", graph: "关系图谱" },
     graphTip: "拖拽视图 · 悬停高亮 · 点击节点查看说明",
     storyHint: "故事线正在生成……点击任意节点查看事件。",
     graphHint: "点击节点查看说明；悬停可高亮它的所有连接。",
@@ -179,10 +178,9 @@ const uiText = {
     archiveEyebrow: "ARCHIVE INDEX",
     archiveTitle: "Spirit Connect Fantasy Book Sequence",
     archiveLead:
-      "Main volumes appear in archive order. Open any available volume to start reading.",
+      "Read published works or browse previews of books in development.",
     sideStoriesTitle: "Side Stories",
-    sideStoryPreview: "View preview",
-    views: ["Archive", "Story Lines", "Relation Graph"],
+    views: { archive: "Archive", extras: "Spin-offs", storyline: "Story Lines", graph: "Relation Graph" },
     graphTip: "Drag view · Hover to highlight · Click a node",
     storyHint: "The line is drawing... click any node to read the event.",
     graphHint: "Click a node to read about it; hover to light up its connections.",
@@ -398,7 +396,7 @@ let frameTimeAvg = 16.7;
 let frameSamples = 0;
 let lastQualityCheck = 0;
 const domCache = new Map();
-const VIEW_HASHES = { archive: "#archive-grid", storyline: "#storylines", graph: "#relations" };
+const VIEW_HASHES = { archive: "#archive-grid", extras: "#extras", storyline: "#storylines", graph: "#relations" };
 
 const SECTIONS = 12;
 const textureLoader = new THREE.TextureLoader();
@@ -1048,8 +1046,8 @@ function applyLanguage(next) {
   els.graphTip.textContent = copy.graphTip;
   els.footerCopy.textContent = copy.footerCopy;
   els.bookLink.textContent = copy.enter;
-  els.finalViewButtons.forEach((btn, i) => {
-    btn.textContent = copy.views[i];
+  els.finalViewButtons.forEach((btn) => {
+    btn.textContent = copy.views[btn.dataset.finalView];
   });
   els.langButtons.forEach((btn) => btn.classList.toggle("is-active", btn.dataset.lang === language));
   els.modeButtons.forEach((btn) => {
@@ -1110,37 +1108,32 @@ function buildArchive() {
     })),
   ];
 
-  archiveList.innerHTML = items
+  renderArchiveCards(archiveList, items);
+  renderArchiveCards(sideStoryList, sideStories.map((story) => ({
+    title: story.title[language],
+    text: `${story.status[language]} · ${story.description[language]}`,
+    cover: getCover(story),
+    link: bookLinkFor(story.link),
+  })));
+}
+
+function renderArchiveCards(list, items) {
+  list.innerHTML = items
     .map(
       (item) => `
         <${item.link ? `a href="${item.link}"` : "article"} class="archive-card ${item.empty ? "is-empty" : ""}">
           ${item.cover ? `<span class="archive-thumb" style="background-image:url('${item.cover}')"></span>` : ""}
           <strong>${item.title}</strong>
           <p>${item.text}</p>
-          ${item.link ? `<span class="archive-card-link">${copy.enter}</span>` : ""}
+          ${item.link ? `<span class="archive-card-link">${uiText[language].enter}</span>` : ""}
         </${item.link ? "a" : "article"}>
-      `
-    )
-    .join("");
-
-  sideStoryList.innerHTML = sideStories
-    .map(
-      (story) => `
-        <a href="${bookLinkFor(story.link)}" class="archive-card side-story-card">
-          <img src="${getCover(story)}" width="642" height="1024" loading="lazy" alt="">
-          <div>
-            <strong>${story.title[language]}</strong>
-            <p>${story.description[language]}</p>
-            <p class="side-story-status">${story.status[language]}</p>
-            <span class="archive-card-link">${copy.sideStoryPreview}</span>
-          </div>
-        </a>
       `
     )
     .join("");
 }
 
 function viewFromHash(hash) {
+  if (hash === VIEW_HASHES.extras) return "extras";
   if (hash === "#storylines" || hash === "#storyline") return "storyline";
   if (hash === "#relations" || hash === "#graph") return "graph";
   if (hash === "#archive-grid" || hash === "#archive") return "archive";
@@ -1159,7 +1152,11 @@ function applyLocationView() {
 }
 
 function showFinalView(view, { updateHash = false } = {}) {
-  els.finalViewButtons.forEach((btn) => btn.classList.toggle("is-active", btn.dataset.finalView === view));
+  els.finalViewButtons.forEach((btn) => {
+    const active = btn.dataset.finalView === view;
+    btn.classList.toggle("is-active", active);
+    btn.setAttribute("aria-pressed", String(active));
+  });
   document.querySelectorAll(".final-view").forEach((el) => el.classList.remove("is-active"));
   document.getElementById(`final-${view}`).classList.add("is-active");
   if (view === "storyline") buildStoryline();
