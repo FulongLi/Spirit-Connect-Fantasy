@@ -5,7 +5,8 @@
 ## 阅读入口
 
 - [进入灵接幻想档案](https://fulongli.github.io/Spirit-Connect-Fantasy/)
-- [书卷总览与故事支线](https://fulongli.github.io/Spirit-Connect-Fantasy/#archive-grid)
+- [书卷总览](https://fulongli.github.io/Spirit-Connect-Fantasy/#archive-grid)
+- [番外 · 故事支线](https://fulongli.github.io/Spirit-Connect-Fantasy/#extras)
 - [阅读《月球暗面》](https://fulongli.github.io/Spirit-Connect-Fantasy/novels/dark-moon/)
 - [阅读《巨鲸陨落》](https://fulongli.github.io/Spirit-Connect-Fantasy/novels/whale-fall/)
 - [《黑潮时代》预告](https://fulongli.github.io/Spirit-Connect-Fantasy/novels/black-tide-era/)
