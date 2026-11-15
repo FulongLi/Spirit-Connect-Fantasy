@@ -1,0 +1,114 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{novel-style}[2026/06/15 Chinese novel style]
+
+\RequirePackage[a5paper,inner=23mm,outer=19mm,top=22mm,bottom=24mm,headheight=15pt]{geometry}
+\RequirePackage{graphicx}
+\RequirePackage{xcolor}
+\RequirePackage{fancyhdr}
+\RequirePackage{titlesec}
+\RequirePackage{setspace}
+\RequirePackage{indentfirst}
+\RequirePackage{microtype}
+\RequirePackage{hyperref}
+\RequirePackage{bookmark}
+\RequirePackage{ifthen}
+\RequirePackage{emptypage}
+
+% 颜色
+\definecolor{NovelGray}{HTML}{555555}
+\definecolor{NovelLightGray}{HTML}{AAAAAA}
+
+% 正文排版
+\setlength{\parindent}{2em}
+\setlength{\parskip}{0pt}
+\linespread{1.45}
+\raggedbottom
+\emergencystretch=2em
+\clubpenalty=10000
+\widowpenalty=10000
+\displaywidowpenalty=10000
+
+% 章节标题
+\titleformat{\chapter}[display]
+  {\centering\heiti\bfseries}
+  {\color{NovelLightGray}\zihao{-3} 第\chinese{chapter}章}
+  {1.2em}
+  {\zihao{2}}
+\titlespacing*{\chapter}{0pt}{18mm}{18mm}
+
+\titleformat{\section}
+  {\heiti\bfseries\zihao{4}}
+  {\thesection}{0.8em}{}
+
+% 页眉页脚
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE]{\small\color{NovelGray}\novelauthor}
+\fancyhead[RO]{\small\color{NovelGray}\noveltitle}
+\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{0.3pt}
+\renewcommand{\footrulewidth}{0pt}
+\fancypagestyle{plain}{%
+  \fancyhf{}
+  \fancyfoot[C]{\small\thepage}
+  \renewcommand{\headrulewidth}{0pt}
+}
+
+% PDF 元数据
+\hypersetup{
+  unicode=true,
+  pdftitle={\noveltitle},
+  pdfauthor={\novelauthor},
+  pdfsubject={中文小说},
+  colorlinks=false,
+  hidelinks
+}
+
+% 场景分隔符
+\newcommand{\SceneBreak}{%
+  \par\vspace{1.2em}
+  \begin{center}\textcolor{NovelLightGray}{\rule{4.8em}{0.4pt}}\end{center}
+  \vspace{1.2em}\par
+}
+
+% 对话或通信文本
+\newenvironment{lettertext}
+  {\begin{quote}\small\kaishu}
+  {\end{quote}}
+
+% 封面
+\newcommand{\NovelCover}{%
+  \begin{titlepage}
+    \thispagestyle{empty}
+    \centering
+    \IfFileExists{\coverimage}{%
+      \includegraphics[width=\paperwidth,height=\paperheight,keepaspectratio]{\coverimage}
+    }{%
+      \vspace*{0.18\textheight}
+      {\heiti\bfseries\zihao{0}\noveltitle\par}
+      \vspace{1.5em}
+      {\kaishu\zihao{3}\novelsubtitle\par}
+      \vfill
+      {\songti\zihao{3}\novelauthor\ 著\par}
+      \vspace*{0.12\textheight}
+    }
+  \end{titlepage}
+  \cleardoublepage
+}
+
+% 版权页
+\newcommand{\NovelCopyrightPage}{%
+  \thispagestyle{empty}
+  \vspace*{0.58\textheight}
+  {\small
+  \noindent 书名：\noveltitle\par
+  \noindent 作者：\novelauthor\par
+  \noindent 版本：\novelversion\par
+  \noindent 日期：\noveldate\par
+  \noindent 出版：\novelpublisher\par
+  \noindent \novelisbn\par
+  \vspace{1em}
+  \noindent \novelcopyright\par
+  }
+  \cleardoublepage
+}
