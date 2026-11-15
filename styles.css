@@ -764,6 +764,47 @@ body[data-theme="night"] .archive-card {
   opacity: 0.56;
 }
 
+.side-stories {
+  margin-top: 36px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+}
+
+.side-stories h3 {
+  margin: 0;
+  color: var(--ink);
+  font-size: clamp(22px, 3vw, 30px);
+}
+
+.archive-grid.side-story-list {
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 390px), 1fr));
+  margin-top: 16px;
+}
+
+.side-story-card {
+  display: grid;
+  grid-template-columns: clamp(72px, 18vw, 102px) minmax(0, 1fr);
+  align-items: start;
+  gap: 16px;
+}
+
+.side-story-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.22);
+}
+
+.side-story-card .side-story-status {
+  margin-top: 8px;
+  font-size: 13px;
+}
+
+.side-story-card .archive-card-link {
+  margin-top: 6px;
+}
+
 @media (max-width: 820px) {
   .topbar {
     flex-wrap: wrap;

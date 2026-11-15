@@ -114,6 +114,19 @@ books.forEach((book, i) => {
 const CABIN_COUNT = 6;
 const cabinBooks = books.slice(0, CABIN_COUNT);
 
+const sideStories = [
+  {
+    title: { zh: "黑潮时代", en: "Black Tide Era" },
+    status: { zh: "筹备中", en: "In development" },
+    cover: { zh: "assets/web/BT_cn.jpg", en: "assets/web/BT_en.jpg" },
+    link: "novels/black-tide-era/",
+    description: {
+      zh: "以 CP2 先生为主角，讲述他的早年生活，以及他亲历黑潮时代的故事。",
+      en: "A side story about CP2's early life and what he lived through during the Black Tide.",
+    },
+  },
+];
+
 const reserved = [
   { zh: "数字吉姆", en: "Digital Jim" },
   { zh: "泰拉撒记录", en: "Terasa Records" },
@@ -138,7 +151,9 @@ const uiText = {
     archiveEyebrow: "档案索引",
     archiveTitle: "灵接幻想书卷序列",
     archiveLead:
-      "六卷书按档案顺序排列。全文已上线的书卷可直接进入阅读，其余书卷仍在创作中。",
+      "主线书卷按档案顺序排列。已上线的作品可直接阅读。",
+    sideStoriesTitle: "故事支线",
+    sideStoryPreview: "查看预告",
     views: ["书卷总览", "故事线", "关系图谱"],
     graphTip: "拖拽视图 · 悬停高亮 · 点击节点查看说明",
     storyHint: "故事线正在生成……点击任意节点查看事件。",
@@ -164,7 +179,9 @@ const uiText = {
     archiveEyebrow: "ARCHIVE INDEX",
     archiveTitle: "Spirit Connect Fantasy Book Sequence",
     archiveLead:
-      "Six volumes in archive order. Volumes with full text online open straight into the reader; the rest are still being written.",
+      "Main volumes appear in archive order. Open any available volume to start reading.",
+    sideStoriesTitle: "Side Stories",
+    sideStoryPreview: "View preview",
     views: ["Archive", "Story Lines", "Relation Graph"],
     graphTip: "Drag view · Hover to highlight · Click a node",
     storyHint: "The line is drawing... click any node to read the event.",
@@ -402,6 +419,7 @@ const statusEl = document.getElementById("book-status");
 const themeEl = document.getElementById("book-theme");
 const link = document.getElementById("book-link");
 const archiveList = document.getElementById("archive-list");
+const sideStoryList = document.getElementById("side-story-list");
 const graphView = document.getElementById("final-graph");
 
 const els = {
@@ -414,6 +432,7 @@ const els = {
   archiveEyebrow: document.querySelector("[data-i18n='archiveEyebrow']"),
   archiveTitle: document.querySelector("[data-i18n='archiveTitle']"),
   archiveLead: document.querySelector("[data-i18n='archiveLead']"),
+  sideStoriesTitle: document.querySelector("[data-i18n='sideStoriesTitle']"),
   graphTip: document.querySelector("[data-i18n='graphTip']"),
   footerCopy: document.querySelector("[data-i18n='footerCopy']"),
   bookLink: document.querySelector("[data-i18n='enter']"),
@@ -1025,6 +1044,7 @@ function applyLanguage(next) {
   els.archiveEyebrow.textContent = copy.archiveEyebrow;
   els.archiveTitle.textContent = copy.archiveTitle;
   els.archiveLead.textContent = copy.archiveLead;
+  els.sideStoriesTitle.textContent = copy.sideStoriesTitle;
   els.graphTip.textContent = copy.graphTip;
   els.footerCopy.textContent = copy.footerCopy;
   els.bookLink.textContent = copy.enter;
@@ -1099,6 +1119,22 @@ function buildArchive() {
           <p>${item.text}</p>
           ${item.link ? `<span class="archive-card-link">${copy.enter}</span>` : ""}
         </${item.link ? "a" : "article"}>
+      `
+    )
+    .join("");
+
+  sideStoryList.innerHTML = sideStories
+    .map(
+      (story) => `
+        <a href="${bookLinkFor(story.link)}" class="archive-card side-story-card">
+          <img src="${getCover(story)}" width="642" height="1024" loading="lazy" alt="">
+          <div>
+            <strong>${story.title[language]}</strong>
+            <p>${story.description[language]}</p>
+            <p class="side-story-status">${story.status[language]}</p>
+            <span class="archive-card-link">${copy.sideStoryPreview}</span>
+          </div>
+        </a>
       `
     )
     .join("");

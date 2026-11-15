@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>灵接幻想档案</title>
     <meta name="description" content="灵接幻想小说档案的沉浸式展示原型。" />
-    <link rel="stylesheet" href="styles.css?v=20261020-1" />
+    <link rel="stylesheet" href="styles.css?v=20261115-1" />
   </head>
   <body data-theme="night" data-lang="zh">
     <canvas id="scene" aria-label="灵接幻想环形档案舱场景"></canvas>
@@ -63,7 +63,7 @@
         <p class="eyebrow" data-i18n="archiveEyebrow">档案索引</p>
         <h2 id="archive-title" data-i18n="archiveTitle">灵接幻想书卷序列</h2>
         <p class="overview-lead" data-i18n="archiveLead">
-          六卷书按档案顺序排列。全文已上线的书卷可直接进入阅读，其余书卷仍在创作中。
+          主线书卷按档案顺序排列。已上线的作品可直接阅读。
         </p>
         <div class="archive-tabs" role="tablist" aria-label="Archive views">
           <button type="button" class="is-active" data-final-view="archive">书卷总览</button>
@@ -72,6 +72,10 @@
         </div>
         <div class="final-view is-active" id="final-archive">
           <div class="archive-grid" id="archive-list"></div>
+          <section class="side-stories" aria-labelledby="side-stories-title">
+            <h3 id="side-stories-title" data-i18n="sideStoriesTitle">故事支线</h3>
+            <div class="archive-grid side-story-list" id="side-story-list"></div>
+          </section>
         </div>
         <div class="final-view" id="final-storyline">
           <div class="storyline-layout">
@@ -105,6 +109,6 @@
         }
       }
     </script>
-    <script type="module" src="app.js?v=20261020-1"></script>
+    <script type="module" src="app.js?v=20261115-1"></script>
   </body>
 </html>
